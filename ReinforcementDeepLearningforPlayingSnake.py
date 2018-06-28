@@ -77,9 +77,12 @@ class Snake():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-        if len(positionList) > self.size:
-            delPos, positionList = positionList[0], positionList[1:]
-            self.board[delPos[0]][delPos[1]] = 0
+            if len(positionList) > self.size:
+                delPos, positionList = positionList[0], positionList[1:]
+                self.board[delPos[0]][delPos[1]] = 0
+                
+            print("Current Score: {}".format(self.score))
+        return (self.board, self.velocity, self.applePos)
         
     def collision(self):
         '''
