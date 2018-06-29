@@ -106,8 +106,27 @@ class Snake():
         randomly choose an unoccupied spot to be the next apple position
         '''
         while True:
-            randX = random.randint(0, self.boardSize)
-            randY = random.randint(0, self.boardSize)
-            if (self.positionList[randX, randY]==0):
+            randX = random.randint(0, self.boardSize-1)
+            randY = random.randint(0, self.boardSize-1)
+            if (self.board[randX, randY]==0):
                 self.applePos = np.asarray((randX, randY))
                 break
+
+#%%
+'''
+testing the snake program with user input
+'''
+
+env = Snake(boardSize=20, startingSize=3);
+env.displayBoard()
+while True:
+    userInput = input()
+    print('inputted is: ' + userInput)
+    if userInput == 'q' or userInput == 'Q':
+        print('game exited')
+        break
+    else:
+        print('inputting next step')
+        env.takeAction(userInput)
+        env.displayBoard()
+        
