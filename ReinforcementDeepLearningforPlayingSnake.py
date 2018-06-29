@@ -28,6 +28,10 @@ class Snake():
     #board, boardSize
     #positionList, applePos, velocity
     #score, tick
+    
+    #!!! NOTE:
+    # when dealing with multi-dim arrays, use [a, b]
+    # NOT [a][b], which is less efficient and can cause confusing indexing problems
     def __init__(self, boardSize=20, startingSize=3):
         self.boardSize=boardSize
         self.size = startingSize
@@ -35,16 +39,22 @@ class Snake():
     
     def reset(self):
         self.board = np.zeros((self.boardSize, self.boardSize))
-        self.board[0][0] = 1
-        self.positionList = np.zeros((1, 2))
+        self.board[0, 0:self.size] = 1
+        self.positionList = np.zeros((self.size, 2))
+        #filling the position list with starting positions
+        self.positionList[0:self.size, 1] = np.arange(self.size)
+        self.positionList = self.positionList.astype('intp')
         self.newApplePos()
         self.score = 0
         self.tick = 0
         self.velocity = 1
         
     def displayBoard(self):
-        plt.imshow(self.board, cmap='gray')
-        
+        #plt.imshow(self.board, cmap='gray')
+        print(self.board)
+        print(self.positionList)
+        print(self.applePos)
+        print(self.velocity)
     def getInput(self):
         return self.board
     
@@ -63,14 +73,14 @@ class Snake():
             if self.velocity > 3:
                 self.velocity = 0
         if self.velocity == 0:
-            velVector = np.asarray((0, -1))
-        elif self.velocity == 1:
-            velVector = np.asarray((1, 0))
-        elif self.velocity == 2:
-            velVector = np.asarray((0, 1))
-        else:
             velVector = np.asarray((-1, 0))
-        np.append(self.positionList, (self.positionList[-1]+velVector))
+        elif self.velocity == 1:
+            velVector = np.asarray((0, 1))
+        elif self.velocity == 2:
+            velVector = np.asarray((1, 0))
+        else:
+            velVector = np.asarray((0, -1))
+        self.positionList = np.vstack((self.positionList, (self.positionList[-1]+velVector)))
         done = self.collision()
         if not done:
             if self.ateApple():
@@ -78,10 +88,11 @@ class Snake():
                 self.size+=1
                 self.newApplePos()
             if len(self.positionList) > self.size:
-                delPos, self.positionList = self.positionList[0], self.positionList[1:]
-                self.board[delPos[0]][delPos[1]] = 0
-                
+                self.board[self.positionList[0, 0], self.positionList[0, 1]] = 0
+                self.positionList = self.positionList[1:]
             print("Current Score: {}".format(self.score))
+            print("Current Tick: {}".format(self.tick))
+        self.board[self.positionList[:, 0], self.positionList[:, 1]] = 1
         return (self.board, self.velocity, self.applePos)
         
     def collision(self):
@@ -91,14 +102,16 @@ class Snake():
         '''
         positionList = self.positionList
         currentPos = positionList[-1]
-        if any(pos==currentPos for pos in positionList[:-1])\
-        or currentPos[:] < 0 or self.boardSize < currentPos[:]:
+        if any(np.array_equal(pos, currentPos) for pos in positionList[:-1])\
+        or any(currentPos[:] < 0) or self.boardSize < any(currentPos[:]):
+            print('collision detected')
             return True
         else:
             return False
         
     def ateApple(self):
-        if self.positionList[-1]==self.applePos:
+        if (np.array_equal(self.positionList[-1], self.applePos)):
+            print('ate an apple')
             return True
         
     def newApplePos(self):
@@ -110,6 +123,8 @@ class Snake():
             randY = random.randint(0, self.boardSize-1)
             if (self.board[randX, randY]==0):
                 self.applePos = np.asarray((randX, randY))
+                self.board[randX, randY]=2
+                print('new apple created')
                 break
 
 #%%
@@ -120,13 +135,14 @@ testing the snake program with user input
 env = Snake(boardSize=20, startingSize=3);
 env.displayBoard()
 while True:
-    userInput = input()
-    print('inputted is: ' + userInput)
-    if userInput == 'q' or userInput == 'Q':
+    userInput = float(input())
+    print('inputted is: ' + str(userInput))
+    if (userInput != 0 and userInput != 1 and userInput !=2):
         print('game exited')
         break
     else:
         print('inputting next step')
         env.takeAction(userInput)
         env.displayBoard()
+        
         
