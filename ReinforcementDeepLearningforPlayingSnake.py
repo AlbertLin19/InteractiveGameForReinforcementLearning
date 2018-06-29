@@ -38,23 +38,23 @@ class Snake():
         self.reset()
     
     def reset(self):
-        self.board = np.zeros((self.boardSize, self.boardSize))
-        self.board[0, 0:self.size] = 1
         self.positionList = np.zeros((self.size, 2))
         #filling the position list with starting positions
         self.positionList[0:self.size, 1] = np.arange(self.size)
         self.positionList = self.positionList.astype('intp')
         self.newApplePos()
+        self.paintBoard()
         self.score = 0
         self.tick = 0
         self.velocity = 1
         
-    def displayBoard(self):
+    def displayInfo(self):
         #plt.imshow(self.board, cmap='gray')
         print(self.board)
         print(self.positionList)
         print(self.applePos)
         print(self.velocity)
+        
     def getInput(self):
         return self.board
     
@@ -62,7 +62,7 @@ class Snake():
         '''
         0 is turn counterclockwise, 1 is straight, 2 is turn clockwise
         '''
-        
+        # translating the input into a change to the velocity
         self.tick+=1
         if action == 0:
             self.velocity -=1
@@ -72,6 +72,9 @@ class Snake():
             self.velocity+=1
             if self.velocity > 3:
                 self.velocity = 0
+                
+        # translating the velocity label to a vector
+        # and adding the new position to the end
         if self.velocity == 0:
             velVector = np.asarray((-1, 0))
         elif self.velocity == 1:
@@ -81,18 +84,30 @@ class Snake():
         else:
             velVector = np.asarray((0, -1))
         self.positionList = np.vstack((self.positionList, (self.positionList[-1]+velVector)))
-        done = self.collision()
-        if not done:
-            if self.ateApple():
+        
+        # checking if an apple was eaten
+        # adjusting size and selecting a new apple position if needed
+        if self.ateApple():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-            if len(self.positionList) > self.size:
-                self.board[self.positionList[0, 0], self.positionList[0, 1]] = 0
+        
+        # trimming the position list if too big
+        if len(self.positionList) > self.size:
                 self.positionList = self.positionList[1:]
-            print("Current Score: {}".format(self.score))
-            print("Current Tick: {}".format(self.tick))
-        self.board[self.positionList[:, 0], self.positionList[:, 1]] = 1
+        
+        # checking if collision occured, and will repaint board if not
+        done = self.collision()
+        if not done:
+            self.paintBoard()
+            
+        # printing the results of this action
+        print("Current Score: {}".format(self.score))
+        print("Current Tick: {}".format(self.tick))
+        if done:
+            print('Game Over!')
+        
+        # returning useful info for the AI input
         return (self.board, self.velocity, self.applePos)
         
     def collision(self):
@@ -103,13 +118,16 @@ class Snake():
         positionList = self.positionList
         currentPos = positionList[-1]
         if any(np.array_equal(pos, currentPos) for pos in positionList[:-1])\
-        or any(currentPos[:] < 0) or self.boardSize < any(currentPos[:]):
+        or any(currentPos[:] < 0) or any(self.boardSize <= currentPos[:]):
             print('collision detected')
             return True
         else:
             return False
         
     def ateApple(self):
+        '''
+        check to see whether an apple was eaten
+        '''
         if (np.array_equal(self.positionList[-1], self.applePos)):
             print('ate an apple')
             return True
@@ -119,13 +137,21 @@ class Snake():
         randomly choose an unoccupied spot to be the next apple position
         '''
         while True:
-            randX = random.randint(0, self.boardSize-1)
-            randY = random.randint(0, self.boardSize-1)
-            if (self.board[randX, randY]==0):
-                self.applePos = np.asarray((randX, randY))
-                self.board[randX, randY]=2
-                print('new apple created')
+            randPos = np.asarray((random.randint(0, self.boardSize-1), random.randint(0, self.boardSize-1)), dtype='intp')
+            if not any(np.array_equal(pos, randPos) for pos in self.positionList[:]):
+                self.applePos = randPos
+                print('new apple location selected')
                 break
+            
+    def paintBoard(self):
+        '''
+        mapping the locations
+        in positionList and applePos
+        to the board
+        '''
+        self.board = np.zeros((self.boardSize, self.boardSize))
+        self.board[self.positionList[:, 0], self.positionList[:, 1]] = 1
+        self.board[self.applePos[0], self.applePos[1]] = 2
 
 #%%
 '''
@@ -133,7 +159,7 @@ testing the snake program with user input
 '''
 
 env = Snake(boardSize=20, startingSize=3);
-env.displayBoard()
+env.displayInfo()
 while True:
     userInput = float(input())
     print('inputted is: ' + str(userInput))
@@ -143,6 +169,6 @@ while True:
     else:
         print('inputting next step')
         env.takeAction(userInput)
-        env.displayBoard()
+        env.displayInfo()
         
         
