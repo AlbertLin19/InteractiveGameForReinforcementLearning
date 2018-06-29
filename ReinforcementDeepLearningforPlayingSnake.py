@@ -52,33 +52,33 @@ class Snake():
         '''
         0 is turn counterclockwise, 1 is straight, 2 is turn clockwise
         '''
-        velocity = self.velocity
-        positionList = self.positionList
+        
+        self.tick+=1
         if action == 0:
-            velocity -=1
-            if velocity < 0:
-                velocity = 3
+            self.velocity -=1
+            if self.velocity < 0:
+                self.velocity = 3
         elif action == 2:
-            velocity+=1
-            if velocity > 3:
-                velocity = 0
-        if velocity == 0:
+            self.velocity+=1
+            if self.velocity > 3:
+                self.velocity = 0
+        if self.velocity == 0:
             velVector = np.asarray((0, -1))
-        elif velocity == 1:
+        elif self.velocity == 1:
             velVector = np.asarray((1, 0))
-        elif velocity == 2:
+        elif self.velocity == 2:
             velVector = np.asarray((0, 1))
         else:
             velVector = np.asarray((-1, 0))
-        np.append(positionList, (positionList[-1]+velVector))
+        np.append(self.positionList, (self.positionList[-1]+velVector))
         done = self.collision()
         if not done:
             if self.ateApple():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-            if len(positionList) > self.size:
-                delPos, positionList = positionList[0], positionList[1:]
+            if len(self.positionList) > self.size:
+                delPos, self.positionList = self.positionList[0], self.positionList[1:]
                 self.board[delPos[0]][delPos[1]] = 0
                 
             print("Current Score: {}".format(self.score))
