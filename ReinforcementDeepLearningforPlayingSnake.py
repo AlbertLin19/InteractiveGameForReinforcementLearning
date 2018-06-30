@@ -31,7 +31,7 @@ class Snake():
     #!!! NOTE:
     # when dealing with multi-dim arrays, use [a, b]
     # NOT [a][b], which is less efficient and can cause confusing indexing problems
-    def __init__(self, boardSize=20, startingSize=3):
+    def __init__(self, boardSize=20, startingSize=4):
         self.boardSize=boardSize
         self.size = startingSize
         self.numStateInputs = ((20, 20, 1), (2, ), (2, ))
@@ -120,7 +120,8 @@ class Snake():
             print('Game Over!')
         
         # returning useful info for the AI input
-        return self.getStateInput(), self.score*self.boardSize-self.snakeDistToApple(), self.done, None
+        reward = self.score*self.boardSize*5-self.snakeDistToApple()*10
+        return self.getStateInput(), reward, self.done, None
         
     def collision(self):
         '''
@@ -179,7 +180,7 @@ class Snake():
 testing the snake program with user input
 
 
-env = Snake(boardSize=20, startingSize=3);
+env = Snake(boardSize=20, startingSize=4);
 env.displayInfo()
 while True:
     userInput = float(input())
@@ -290,7 +291,7 @@ for game in range(NumTrainGames):
         action = player.act(state) # get the action the AI wants to do
         nextState, reward, done, _ = env.takeAction(action) # collect the results from taking the action
         env.displayInfo()
-        reward = reward if not done else -200 # keep reward unless game ended
+        reward = reward if not done else -2000 # keep reward unless game ended
         player.remember(state, action, reward, nextState, done)
         state = nextState
         if len(player.memory) > batch_size:
