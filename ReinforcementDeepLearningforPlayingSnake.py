@@ -121,6 +121,7 @@ class Snake():
         
         # returning useful info for the AI input
         reward = self.score*self.boardSize*5-self.snakeDistToApple()*10
+        print("Current Reward: {}".format(reward))
         return self.getStateInput(), reward, self.done, None
         
     def collision(self):
@@ -234,7 +235,7 @@ class AIPlayer:
         appleOutput = layers.Dense(32, activation='relu')(appleInput)
         concatenated = layers.concatenate([boardOutput, velOutput, appleOutput], axis=-1)
         actionOutput = layers.Dense(32, activation='relu')(concatenated)
-        actionOutput = layers.Dense(self.numActions, activation='softmax')(actionOutput)
+        actionOutput = layers.Dense(self.numActions, activation='linear')(actionOutput)
         model = Model([boardInput, velInput, appleInput], actionOutput)
         model.compile(loss='mse',
                       optimizer=optimizers.Adam(lr=self.learning_rate))
