@@ -53,16 +53,11 @@ class Snake():
         return self.getStateInput()
     
     def displayInfo(self):
-        # printing the results of this action
-        print("Current Tick: {}".format(self.tick))
-        print("Current Score: {}".format(self.score))
         #plt.imshow(self.board, cmap='gray')
         print(self.board)
-        #print(self.positionList)
-        #print(self.applePos)
-        #print('velocity: ' + str(self.velocity))
-        print(self.getStateInput()[1][0])
-        print(self.getStateInput()[2][0])
+        print(self.positionList)
+        print(self.applePos)
+        print('velocity: ' + str(self.velocity))
         
     def getStateInput(self):
         if self.velocity == 0:
@@ -73,8 +68,7 @@ class Snake():
             velVector = np.asarray((1, 0))
         else:
             velVector = np.asarray((0, -1))
-        displacementVect = self.applePos.astype('float32')-self.positionList[-1].astype('float32')
-        return [np.reshape(self.board.astype('float32'), (1, ).__add__(self.numStateInputs[0])), np.reshape(velVector.astype('float32'), (1, ).__add__(self.numStateInputs[1])), np.reshape(displacementVect, (1, ).__add__(self.numStateInputs[2]))]
+        return [np.reshape(self.board.astype('float32'), (1, ).__add__(self.numStateInputs[0])), np.reshape(velVector.astype('float32'), (1, ).__add__(self.numStateInputs[1])), np.reshape(self.applePos.astype('float32'), (1, ).__add__(self.numStateInputs[2]))]
     
     def takeAction(self, action):
         '''
@@ -120,12 +114,15 @@ class Snake():
         if not self.done:
             self.paintBoard()
             
-        
+        # printing the results of this action
+        print("Current Score: {}".format(self.score))
+        print("Current Tick: {}".format(self.tick))
         if self.done:
             print('Game Over!')
         
         # returning useful info for the AI input
-        reward = self.score*1000-self.snakeDistToApple()*10
+        reward = self.score*self.boardSize*5-self.snakeDistToApple()*10
+        print("Current Reward: {}".format(reward))
         return self.getStateInput(), reward, self.done, None
         
     def collision(self):
@@ -279,27 +276,23 @@ running the AI to train
 '''
 NumTrainGames = 50000
 
-env = Snake(boardSize=20, startingSize=5)
+env = Snake(boardSize=20)
 numStateInputs = env.numStateInputs
 numActions = env.numActions
 player = AIPlayer(numStateInputs, numActions)
 done = False
-batch_size = 256
+batch_size = 32
 highestScore = 0
 
 for game in range(NumTrainGames):
     finalScore = 0
     state = env.reset() # get initial state
-    print("Current Game: {}/{}".format(game, NumTrainGames))
     env.displayInfo()
     done = False
     while not done:
         action = player.act(state) # get the action the AI wants to do
         nextState, reward, done, _ = env.takeAction(action) # collect the results from taking the action
-        print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
-        print("Current Reward: {}".format(reward))
-        print("___________________________________________")
         reward = reward if not done else -2000 # keep reward unless game ended
         player.remember(state, action, reward, nextState, done)
         state = nextState
