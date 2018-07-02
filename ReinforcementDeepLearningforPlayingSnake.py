@@ -284,7 +284,7 @@ numStateInputs = env.numStateInputs
 numActions = env.numActions
 player = AIPlayer(numStateInputs, numActions)
 done = False
-batch_size = 256
+batch_size = 32
 highestScore = 0
 
 for game in range(NumTrainGames):
