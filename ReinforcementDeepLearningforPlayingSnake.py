@@ -288,7 +288,6 @@ batch_size = 32
 highestScore = 0
 
 for game in range(NumTrainGames):
-    finalScore = 0
     state = env.reset() # get initial state
     print("Current Game: {}/{}".format(game, NumTrainGames))
     env.displayInfo()
@@ -298,19 +297,18 @@ for game in range(NumTrainGames):
         nextState, reward, done, _ = env.takeAction(action) # collect the results from taking the action
         print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
+        reward = reward if not done else -2000 # keep reward unless game ended
         print("Current Reward: {}".format(reward))
         print("___________________________________________")
-        reward = reward if not done else -2000 # keep reward unless game ended
         player.remember(state, action, reward, nextState, done)
         state = nextState
         if len(player.memory) > batch_size:
             player.replay(batch_size)
     score = env.score
     print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
-    finalScore = score
         
-    if finalScore > highestScore:
+    if score > highestScore:
         # player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(finalScore)) is this path string correct?
-        print('NEW HIGH SCORE: {}!'.format(finalScore))
+        print('NEW HIGH SCORE: {}!'.format(score))
         print('implement model saving!!!')
-        highestScore = finalScore
+        highestScore = score
