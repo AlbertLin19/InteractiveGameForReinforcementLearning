@@ -169,7 +169,7 @@ class Snake():
         '''
         self.board = np.zeros((self.boardSize, self.boardSize))
         self.board[self.positionList[:, 0], self.positionList[:, 1]] = 1
-        self.board[self.applePos[0], self.applePos[1]] = -1
+        self.board[self.applePos[0], self.applePos[1]] = 0.5
         
     def snakeDistToApple(self):
         '''
