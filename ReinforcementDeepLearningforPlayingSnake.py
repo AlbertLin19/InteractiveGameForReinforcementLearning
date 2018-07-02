@@ -33,13 +33,12 @@ class Snake():
     # NOT [a][b], which is less efficient and can cause confusing indexing problems
     def __init__(self, boardSize=20, startingSize=4):
         self.boardSize=boardSize
-        self.startingSize = startingSize
+        self.size = startingSize
         self.numStateInputs = ((20, 20, 1), (2, ), (2, ))
         self.numActions = 3
         self.reset()
     
     def reset(self):
-        self.size = self.startingSize
         self.positionList = np.zeros((self.size, 2))
         #filling the position list with starting positions
         self.positionList[0:self.size, 1] = np.arange(self.size)
@@ -277,7 +276,7 @@ class AIPlayer:
 '''
 running the AI to train
 '''
-NumTrainGames = 50000
+NumTrainGames = 1000
 
 env = Snake(boardSize=20, startingSize=5)
 numStateInputs = env.numStateInputs
