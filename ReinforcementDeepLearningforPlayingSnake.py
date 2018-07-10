@@ -131,8 +131,7 @@ class Snake():
             print('Game Over!')
         
         # returning useful info for the AI input
-        reward = self.maxDist-self.snakeDistToApple()
-        return self.getStateInput(), reward, self.done, None
+        return self.getStateInput(), self.getCurrentReward(), self.done, None
         
     def collision(self):
         '''
@@ -184,6 +183,14 @@ class Snake():
         a = self.positionList[-1][0]-self.applePos[0]
         b = self.positionList[-1][1]-self.applePos[1]
         return np.sqrt(a**2+b**2)
+    
+    def getCurrentReward(self):
+        return self.maxDist-self.snakeDistToApple()
+    
+    def saveBoardState(self, gameNum, reward, done):
+        #save board state here
+        pathName = "/Users/Albert Lin/Documents/GitHub/Game{}Tick{}".format(gameNum, self.tick)
+        #np.save(pathName, self.board)
 
 #%%
 '''
@@ -280,6 +287,7 @@ class AIPlayer:
 running the AI to train
 '''
 NumTrainGames = 20000
+savingBoardHistory = False
 
 env = Snake(boardSize=20, startingSize=5)
 numStateInputs = env.numStateInputs
@@ -294,6 +302,9 @@ for game in range(NumTrainGames):
     print("Current High Score: {}".format(highestScore))
     print("Current Game: {}/{}".format(game, NumTrainGames))
     env.displayInfo()
+    if savingBoardHistory:
+        initReward = env.getCurrentReward
+        env.saveBoardState(game, initReward, False)
     done = False
     while not done:
         action = player.act(state) # get the action the AI wants to do
@@ -304,6 +315,8 @@ for game in range(NumTrainGames):
         reward = reward if not done else -100 # keep reward unless game ended
         print("Current Reward: {}".format(reward))
         print("___________________________________________")
+        if savingBoardHistory:
+            env.saveBoardState(game, reward, done)
         player.remember(state, action, reward, nextState, done)
         state = nextState
         if len(player.memory) > batch_size:
