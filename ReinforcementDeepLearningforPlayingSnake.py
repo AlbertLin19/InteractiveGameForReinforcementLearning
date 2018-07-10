@@ -33,8 +33,9 @@ class Snake():
     # NOT [a][b], which is less efficient and can cause confusing indexing problems
     def __init__(self, boardSize=20, startingSize=4):
         self.boardSize=boardSize
+        self.maxDist = boardSize*np.sqrt(2)
         self.startingSize = startingSize
-        self.numStateInputs = ((20, 20, 1), (2, ), (2, ))
+        self.numStateInputs = (((boardSize**2)*2, ), (2, ), (2, ))
         self.numActions = 3
         self.reset()
     
@@ -61,8 +62,10 @@ class Snake():
         #print(self.positionList)
         #print(self.applePos)
         #print('velocity: ' + str(self.velocity))
-        print(self.getStateInput()[1][0])
-        print(self.getStateInput()[2][0])
+        currentStateInput = self.getStateInput()
+        #print(currentStateInput[0][0])
+        print(currentStateInput[1][0])
+        print(currentStateInput[2][0])
         
     def getStateInput(self):
         if self.velocity == 0:
@@ -74,7 +77,10 @@ class Snake():
         else:
             velVector = np.asarray((0, -1))
         displacementVect = self.applePos.astype('float32')-self.positionList[-1].astype('float32')
-        return [np.reshape(self.board.astype('float32'), (1, ).__add__(self.numStateInputs[0])), np.reshape(velVector.astype('float32'), (1, ).__add__(self.numStateInputs[1])), np.reshape(displacementVect, (1, ).__add__(self.numStateInputs[2]))]
+        flattenedPositions = np.ndarray.flatten(self.positionList.astype('float32'))
+        fillerArray = np.linspace(-1, -1, self.numStateInputs[0][0]-np.size(self.positionList), dtype='float32')
+        combined = np.append(flattenedPositions, fillerArray)
+        return [np.reshape(combined, (1, ).__add__(self.numStateInputs[0])), np.reshape(velVector.astype('float32'), (1, ).__add__(self.numStateInputs[1])), np.reshape(displacementVect, (1, ).__add__(self.numStateInputs[2]))]
     
     def takeAction(self, action):
         '''
@@ -125,7 +131,7 @@ class Snake():
             print('Game Over!')
         
         # returning useful info for the AI input
-        reward = self.score*1000-self.snakeDistToApple()*10
+        reward = (self.maxDist-self.snakeDistToApple())*10
         return self.getStateInput(), reward, self.done, None
         
     def collision(self):
@@ -217,30 +223,26 @@ class AIPlayer:
         self.numStateInputs = numStateInputs
         self.numActions = numActions
         self.memory = deque(maxlen=2000)
-        self.gamma = 0.95    # discount rate
+        self.gamma = 0.97    # discount rate
         self.epsilon = 1.0  # exploration rate
         self.epsilon_min = 0.01
-        self.epsilon_decay = 0.995
+        self.epsilon_decay = 0.997
         self.learning_rate = 0.001
         self.model = self.getModel()
 
     def getModel(self):
         # Neural Net for Deep-Q learning Model
-        boardInput = Input(shape=self.numStateInputs[0])
-        boardOutput = layers.Conv2D(64, (3, 3), activation='relu')(boardInput)
-        boardOutput = layers.MaxPooling2D((2, 2))(boardOutput)
-        boardOutput = layers.Conv2D(128, (3, 3), activation='relu')(boardOutput)
-        boardOutput = layers.MaxPooling2D((2, 2))(boardOutput)
-        boardOutput = layers.Conv2D(128, (3, 3), activation='relu')(boardOutput)
-        boardOutput = layers.Flatten()(boardOutput)
+        positionInput = Input(shape=self.numStateInputs[0])
+        positionOutput = layers.Dense(16, activation='relu')(positionInput)
+        positionOutput = layers.Dense(32, activation='relu')(positionOutput)
         velInput = Input(shape=self.numStateInputs[1])
         velOutput = layers.Dense(32, activation='relu')(velInput)
         appleInput = Input(shape=self.numStateInputs[2])
         appleOutput = layers.Dense(32, activation='relu')(appleInput)
-        concatenated = layers.concatenate([boardOutput, velOutput, appleOutput], axis=-1)
+        concatenated = layers.concatenate([positionOutput, velOutput, appleOutput], axis=-1)
         actionOutput = layers.Dense(32, activation='relu')(concatenated)
         actionOutput = layers.Dense(self.numActions, activation='linear')(actionOutput)
-        model = Model([boardInput, velInput, appleInput], actionOutput)
+        model = Model([positionInput, velInput, appleInput], actionOutput)
         model.compile(loss='mse',
                       optimizer=optimizers.Adam(lr=self.learning_rate))
         return model
@@ -284,17 +286,19 @@ numStateInputs = env.numStateInputs
 numActions = env.numActions
 player = AIPlayer(numStateInputs, numActions)
 done = False
-batch_size = 32
+batch_size = 64
 highestScore = 0
 
 for game in range(NumTrainGames):
     state = env.reset() # get initial state
+    print("Current High Score: {}".format(highestScore))
     print("Current Game: {}/{}".format(game, NumTrainGames))
     env.displayInfo()
     done = False
     while not done:
         action = player.act(state) # get the action the AI wants to do
         nextState, reward, done, _ = env.takeAction(action) # collect the results from taking the action
+        print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
         reward = reward if not done else -2000 # keep reward unless game ended
@@ -308,7 +312,8 @@ for game in range(NumTrainGames):
     print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
         
     if score > highestScore:
-        # player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(finalScore)) is this path string correct?
+        highestScore = score
+        player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(highestScore)) #is this path string correct?
         print('NEW HIGH SCORE: {}!'.format(score))
         print('implement model saving!!!')
-        highestScore = score
+        
