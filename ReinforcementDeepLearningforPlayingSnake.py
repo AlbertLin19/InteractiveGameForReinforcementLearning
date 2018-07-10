@@ -111,10 +111,13 @@ class Snake():
         
         # checking if an apple was eaten
         # adjusting size and selecting a new apple position if needed
+        # add to reward if eaten
+        reward = 0
         if self.ateApple():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
+                reward+=300
         
         # trimming the position list if too big
         if len(self.positionList) > self.size:
@@ -131,7 +134,8 @@ class Snake():
             print('Game Over!')
         
         # returning useful info for the AI input
-        return self.getStateInput(), self.getCurrentReward(), self.done, None
+        reward += self.getCurrentReward()
+        return self.getStateInput(), reward, self.done, None
         
     def collision(self):
         '''
