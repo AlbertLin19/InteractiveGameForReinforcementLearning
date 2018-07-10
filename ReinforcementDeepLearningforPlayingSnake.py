@@ -131,7 +131,7 @@ class Snake():
             print('Game Over!')
         
         # returning useful info for the AI input
-        reward = (self.maxDist-self.snakeDistToApple())*10
+        reward = self.maxDist-self.snakeDistToApple()
         return self.getStateInput(), reward, self.done, None
         
     def collision(self):
@@ -279,7 +279,7 @@ class AIPlayer:
 '''
 running the AI to train
 '''
-NumTrainGames = 50000
+NumTrainGames = 20000
 
 env = Snake(boardSize=20, startingSize=5)
 numStateInputs = env.numStateInputs
@@ -301,7 +301,7 @@ for game in range(NumTrainGames):
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
-        reward = reward if not done else -2000 # keep reward unless game ended
+        reward = reward if not done else -100 # keep reward unless game ended
         print("Current Reward: {}".format(reward))
         print("___________________________________________")
         player.remember(state, action, reward, nextState, done)
