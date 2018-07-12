@@ -288,6 +288,29 @@ class AIPlayer:
 
 #%%
 '''
+let a trained model play with the following functions
+'''
+
+def playSnake(player):
+    gameEnv = Snake(boardSize=20, startingSize=5)
+    state = gameEnv.reset() # get initial state
+    gameEnv.displayInfo()
+    done = False
+    while not done:
+        action = player.act(state) # get the action the AI wants to do
+        nextState, reward, done, _ = gameEnv.takeAction(action) # collect the results from taking the action
+        gameEnv.displayInfo()
+        reward = reward if not done else -100 # keep reward unless game ended
+        print("Current Reward: {}".format(reward))
+        print("___________________________________________")
+        state = nextState
+    print("Score: {}".format(gameEnv.score))
+    
+def loadTrainedModelWeights(player, path="/Users/Albert Lin/Documents/GitHub/score10"):
+    player.load(path)
+    
+#%%
+'''
 running the AI to train
 '''
 NumTrainGames = 20000
