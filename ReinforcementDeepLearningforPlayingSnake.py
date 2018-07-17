@@ -45,7 +45,7 @@ class Snake():
         initializes a few fields and calls a reset to the game
         '''
         self.boardSize=boardSize
-        self.maxDist = boardSize*2
+        self.maxDist = (boardSize-1)*2
         self.startingSize = startingSize
         self.numStateInputs = ((boardSize, boardSize, 3), )
         self.numActions = 4
@@ -188,7 +188,7 @@ class Snake():
         self.board[self.positionList[-1, 0], self.positionList[-1, 1], 2] = 1
         self.board[self.applePos[0], self.applePos[1], 0] = 1
         
-    def snakeDistToApple(self):
+    def snakePathDistToApple(self):
         '''
         calculate sum of magnitude of displacement vectors between apple and snake
         (path distance)
@@ -198,7 +198,7 @@ class Snake():
         return abs(a)+abs(b)
     
     def getCurrentReward(self):
-        return self.maxDist-self.snakeDistToApple()
+        return self.maxDist-self.snakePathDistToApple()
     
     def saveBoardState(self, gameNum, reward, done):
         #save board state here
