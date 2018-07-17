@@ -11,6 +11,9 @@ and trained an AI to play it through reinforcement deep learning
 import numpy as np
 import random
 
+print("Which mode to run this in? (T)rain/(U)serplay/(M)odelplay")
+mode = input()
+
 class Snake():
     '''
     programming the classic snake game in a simple manner
@@ -211,45 +214,48 @@ class Snake():
 #%%
 '''
 
-testing the snake program with user input
+testing the snake program with user input if correct mode
 
 NOTE: necessary to use plt.pause() for a crude animation
 since it takes time to plot - better method is to use matplotlib's animation tools
 or put it on another thread perhaps?
 '''
-import matplotlib.pyplot as plt
-playing = True
-while playing:
-    print("Starting new game...")
-    env = Snake(boardSize=20, startingSize=4);
-    tick, score, board = env.getGameInfo()
-    print("Current Tick: {}".format(tick))
-    print("Current Score: {}".format(score))
-    imgplot = plt.imshow(board)
-    plt.pause(0.001)
-    alive = True
-    while alive:
-        print("type 0, 1, 2, or 3")
-        userInput = float(input())
-        print('inputted is: ' + str(userInput))
-        if (userInput != 0 and userInput != 1 and userInput !=2 and userInput!=3):
-            print('bad input: ' + str(userInput))
+
+if mode.__eq__("U"):
+    print("Playing Snake with user input")
+    import matplotlib.pyplot as plt
+    playing = True
+    while playing:
+        print("Starting new game...")
+        env = Snake(boardSize=20, startingSize=4);
+        tick, score, board = env.getGameInfo()
+        print("Current Tick: {}".format(tick))
+        print("Current Score: {}".format(score))
+        imgplot = plt.imshow(board)
+        plt.pause(0.001)
+        alive = True
+        while alive:
+            print("type 0, 1, 2, or 3")
+            userInput = float(input())
+            print('inputted is: ' + str(userInput))
+            if (userInput != 0 and userInput != 1 and userInput !=2 and userInput!=3):
+                print('bad input: ' + str(userInput))
+            else:
+                print('inputting next step')
+                state, reward, done = env.takeAction(userInput)
+                imgplot = plt.imshow(state)
+                plt.pause(0.001)
+            if done:
+                alive = False
+                
+        print('game over')
+        print('restart? (y)')
+        userInput = input()
+        if (userInput.__eq__("y")):
+            print("playing again")
         else:
-            print('inputting next step')
-            state, reward, done = env.takeAction(userInput)
-            imgplot = plt.imshow(state)
-            plt.pause(0.001)
-        if done:
-            alive = False
-            
-    print('game over')
-    print('restart? (y)')
-    userInput = input()
-    if (userInput.__eq__("y")):
-        print("playing again")
-    else:
-        print("quitting")
-        playing = False
+            print("quitting")
+            playing = False
 #%%
 '''
 This AI model for Deep-Q Learning comes originally from
@@ -259,135 +265,141 @@ this github repo:
 changed the code accordingly to better suit this problem
 defining the AI training model
 '''
-from keras import layers, optimizers, Input, Model
-from collections import deque
 
-class AIPlayer:
+if mode.__eq__("T") or mode.__eq__("M"):
+    print("Loading AI model class...")
+    from keras import layers, optimizers, Input, Model
+    from collections import deque
     
-    # initializing constants and constructing model
-    def __init__(self, numStateInputs, numActions):
-        self.numStateInputs = numStateInputs
-        self.numActions = numActions
-        self.memory = deque(maxlen=2000)
-        self.gamma = 0.98    # discount rate for future events
-        self.epsilon = 1.0  # exploration rate
-        self.epsilon_min = 0.01
-        self.epsilon_decay = 0.997
-        self.learning_rate = 0.001
-        self.model = self.getModel()
-
-    def getModel(self):
-        # Neural Net for Deep-Q learning Model
-        positionInput = Input(shape=self.numStateInputs[0])
-        positionOutput = layers.Dense(16, activation='relu')(positionInput)
-        positionOutput = layers.Dense(32, activation='relu')(positionOutput)
-        velInput = Input(shape=self.numStateInputs[1])
-        velOutput = layers.Dense(32, activation='relu')(velInput)
-        appleInput = Input(shape=self.numStateInputs[2])
-        appleOutput = layers.Dense(32, activation='relu')(appleInput)
-        concatenated = layers.concatenate([positionOutput, velOutput, appleOutput], axis=-1)
-        actionOutput = layers.Dense(32, activation='relu')(concatenated)
-        actionOutput = layers.Dense(self.numActions, activation='linear')(actionOutput)
-        model = Model([positionInput, velInput, appleInput], actionOutput)
-        model.compile(loss='mse',
-                      optimizer=optimizers.Adam(lr=self.learning_rate))
-        return model
-
-    def remember(self, state, action, reward, next_state, done):
-        self.memory.append((state, action, reward, next_state, done))
-
-    def act(self, state):
-        if np.random.rand() <= self.epsilon:
-            return random.randrange(self.numActions)
-        actionValues = self.model.predict(state)
-        return np.argmax(actionValues[0])  # returns action
-
-    def replay(self, batchSize):
-        minibatch = random.sample(self.memory, batchSize)
-        for state, action, reward, next_state, done in minibatch:
-            target = reward
-            if not done:
-                target = (reward + self.gamma *
-                          np.amax(self.model.predict(next_state)[0]))
-            target_f = self.model.predict(state)
-            target_f[0][action] = target
-            self.model.fit(state, target_f, epochs=1, verbose=0)
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
-
-    def load(self, name):
-        self.model.load_weights(name)
-
-    def save(self, name):
-        self.model.save_weights(name)
+    class AIPlayer:
+        
+        # initializing constants and constructing model
+        def __init__(self, numStateInputs, numActions):
+            self.numStateInputs = numStateInputs
+            self.numActions = numActions
+            self.memory = deque(maxlen=2000)
+            self.gamma = 0.98    # discount rate for future events
+            self.epsilon = 1.0  # exploration rate
+            self.epsilon_min = 0.01
+            self.epsilon_decay = 0.997
+            self.learning_rate = 0.001
+            self.model = self.getModel()
+    
+        def getModel(self):
+            # Neural Net for Deep-Q learning Model
+            positionInput = Input(shape=self.numStateInputs[0])
+            positionOutput = layers.Dense(16, activation='relu')(positionInput)
+            positionOutput = layers.Dense(32, activation='relu')(positionOutput)
+            velInput = Input(shape=self.numStateInputs[1])
+            velOutput = layers.Dense(32, activation='relu')(velInput)
+            appleInput = Input(shape=self.numStateInputs[2])
+            appleOutput = layers.Dense(32, activation='relu')(appleInput)
+            concatenated = layers.concatenate([positionOutput, velOutput, appleOutput], axis=-1)
+            actionOutput = layers.Dense(32, activation='relu')(concatenated)
+            actionOutput = layers.Dense(self.numActions, activation='linear')(actionOutput)
+            model = Model([positionInput, velInput, appleInput], actionOutput)
+            model.compile(loss='mse',
+                          optimizer=optimizers.Adam(lr=self.learning_rate))
+            return model
+    
+        def remember(self, state, action, reward, next_state, done):
+            self.memory.append((state, action, reward, next_state, done))
+    
+        def act(self, state):
+            if np.random.rand() <= self.epsilon:
+                return random.randrange(self.numActions)
+            actionValues = self.model.predict(state)
+            return np.argmax(actionValues[0])  # returns action
+    
+        def replay(self, batchSize):
+            minibatch = random.sample(self.memory, batchSize)
+            for state, action, reward, next_state, done in minibatch:
+                target = reward
+                if not done:
+                    target = (reward + self.gamma *
+                              np.amax(self.model.predict(next_state)[0]))
+                target_f = self.model.predict(state)
+                target_f[0][action] = target
+                self.model.fit(state, target_f, epochs=1, verbose=0)
+            if self.epsilon > self.epsilon_min:
+                self.epsilon *= self.epsilon_decay
+    
+        def load(self, name):
+            self.model.load_weights(name)
+    
+        def save(self, name):
+            self.model.save_weights(name)
 
 #%%
 '''
 let a trained model play with the following functions
 '''
-
-def playSnake(player):
-    gameEnv = Snake(boardSize=20, startingSize=5)
-    state = gameEnv.reset() # get initial state
-    gameEnv.displayInfo()
-    done = False
-    while not done:
-        action = player.act(state) # get the action the AI wants to do
-        nextState, reward, done, _ = gameEnv.takeAction(action) # collect the results from taking the action
+if mode.__eq__("M"):
+    print("Loading functions to load and play with a pre-trained AI model")
+    def playSnake(player):
+        gameEnv = Snake(boardSize=20, startingSize=5)
+        state = gameEnv.reset() # get initial state
         gameEnv.displayInfo()
-        reward = reward if not done else -100 # keep reward unless game ended
-        print("Current Reward: {}".format(reward))
-        print("___________________________________________")
-        state = nextState
-    print("Score: {}".format(gameEnv.score))
-    
-def loadTrainedModelWeights(player, path="/Users/Albert Lin/Documents/GitHub/score10"):
-    player.load(path)
+        done = False
+        while not done:
+            action = player.act(state) # get the action the AI wants to do
+            nextState, reward, done, _ = gameEnv.takeAction(action) # collect the results from taking the action
+            gameEnv.displayInfo()
+            reward = reward if not done else -100 # keep reward unless game ended
+            print("Current Reward: {}".format(reward))
+            print("___________________________________________")
+            state = nextState
+        print("Score: {}".format(gameEnv.score))
+        
+    def loadTrainedModelWeights(player, path="/Users/Albert Lin/Documents/GitHub/score10"):
+        player.load(path)
     
 #%%
 '''
 running the AI to train
 '''
-NumTrainGames = 20000
-savingBoardHistory = False
-
-env = Snake(boardSize=20, startingSize=5)
-numStateInputs = env.numStateInputs
-numActions = env.numActions
-player = AIPlayer(numStateInputs, numActions)
-done = False
-batch_size = 64
-highestScore = 0
-
-for game in range(NumTrainGames):
-    state = env.reset() # get initial state
-    print("Current High Score: {}".format(highestScore))
-    print("Current Game: {}/{}".format(game, NumTrainGames))
-    env.displayInfo()
-    if savingBoardHistory:
-        initReward = env.getCurrentReward
-        env.saveBoardState(game, initReward, False)
+if mode.__eq__("T"):
+    print("Starting to train the model...")
+    NumTrainGames = 20000
+    savingBoardHistory = False
+    
+    env = Snake(boardSize=20, startingSize=5)
+    numStateInputs = env.numStateInputs
+    numActions = env.numActions
+    player = AIPlayer(numStateInputs, numActions)
     done = False
-    while not done:
-        action = player.act(state) # get the action the AI wants to do
-        nextState, reward, done = env.takeAction(action) # collect the results from taking the action
+    batch_size = 64
+    highestScore = 0
+    
+    for game in range(NumTrainGames):
+        state = env.reset() # get initial state
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
-        print("Current Reward: {}".format(reward))
-        print("___________________________________________")
         if savingBoardHistory:
-            env.saveBoardState(game, reward, done)
-        player.remember(state, action, reward, nextState, done)
-        state = nextState
-        if len(player.memory) > batch_size:
-            player.replay(batch_size)
-    score = env.score
-    print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
-        
-    if score > highestScore:
-        highestScore = score
-        player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(highestScore)) #is this path string correct?
-        print('NEW HIGH SCORE: {}!'.format(score))
-        print('implement model saving!!!')
+            initReward = env.getCurrentReward
+            env.saveBoardState(game, initReward, False)
+        done = False
+        while not done:
+            action = player.act(state) # get the action the AI wants to do
+            nextState, reward, done = env.takeAction(action) # collect the results from taking the action
+            print("Current High Score: {}".format(highestScore))
+            print("Current Game: {}/{}".format(game, NumTrainGames))
+            env.displayInfo()
+            print("Current Reward: {}".format(reward))
+            print("___________________________________________")
+            if savingBoardHistory:
+                env.saveBoardState(game, reward, done)
+            player.remember(state, action, reward, nextState, done)
+            state = nextState
+            if len(player.memory) > batch_size:
+                player.replay(batch_size)
+        score = env.score
+        print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
+            
+        if score > highestScore:
+            highestScore = score
+            player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(highestScore)) #is this path string correct?
+            print('NEW HIGH SCORE: {}!'.format(score))
+            print('implement model saving!!!')
         
