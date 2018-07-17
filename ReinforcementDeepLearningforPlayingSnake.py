@@ -352,17 +352,23 @@ if mode.__eq__("M"):
     def playSnake(player):
         gameEnv = Snake(boardSize=20, startingSize=4)
         state = gameEnv.reset() # get initial state
-        gameEnv.displayInfo()
+        tick, score = gameEnv.getGameInfo()
+        print("Current Tick: {}".format(tick))
+        print("Current Score: {}".format(score))
+        reward = gameEnv.getCurrentReward()
+        print("Current Reward: {}".format(reward))
         done = False
         while not done:
             action = player.act(state, exploring=False) # get the action the AI wants to do
-            nextState, reward, done, _ = gameEnv.takeAction(action) # collect the results from taking the action
-            gameEnv.displayInfo()
-            reward = reward if not done else -100 # keep reward unless game ended
+            print("Taking action: {}".format(action))
+            nextState, reward, done = gameEnv.takeAction(action) # collect the results from taking the action
+            tick, score = gameEnv.getGameInfo()
+            print("Current Tick: {}".format(tick))
+            print("Current Score: {}".format(score))
             print("Current Reward: {}".format(reward))
             print("___________________________________________")
             state = nextState
-        print("Score: {}".format(gameEnv.score))
+        print("Final Score: {}".format(gameEnv.score))
         
     print("Type full path to model save that you wish to load: ")
     path = input()
