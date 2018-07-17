@@ -206,10 +206,10 @@ class Snake():
         
     def getGameInfo(self):
         '''
-        returns tick, score, and board
+        returns tick and score
         '''
         
-        return self.tick, self.score, self.board
+        return self.tick, self.score
 
 #%%
 '''
@@ -228,7 +228,8 @@ if mode.__eq__("U"):
     while playing:
         print("Starting new game...")
         env = Snake(boardSize=20, startingSize=4);
-        tick, score, board = env.getGameInfo()
+        board = env.reset()
+        tick, score = env.getGameInfo()
         print("Current Tick: {}".format(tick))
         print("Current Score: {}".format(score))
         imgplot = plt.imshow(board)
@@ -243,7 +244,7 @@ if mode.__eq__("U"):
             else:
                 print('inputting next step')
                 state, reward, done = env.takeAction(userInput)
-                tick, score, board = env.getGameInfo()
+                tick, score = env.getGameInfo()
                 print("Current Tick: {}".format(tick))
                 print("Current Score: {}".format(score))
                 print("Current Reward: {}".format(reward))
@@ -368,9 +369,11 @@ if mode.__eq__("M"):
 running the AI to train
 '''
 if mode.__eq__("T"):
-    print("Starting to train the model...")
     NumTrainGames = 20000
+    print("Starting to train the model with {} games...".format(NumTrainGames))
+    
     savingBoardHistory = False
+    print("Save board history: {}".format(savingBoardHistory))
     
     env = Snake(boardSize=20, startingSize=5)
     numStateInputs = env.numStateInputs
@@ -384,7 +387,9 @@ if mode.__eq__("T"):
         state = env.reset() # get initial state
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
-        env.displayInfo()
+        tick, score = env.getGameInfo()
+        print("Current Tick: {}".format(tick))
+        print("Current Score: {}".format(score))
         if savingBoardHistory:
             initReward = env.getCurrentReward
             env.saveBoardState(game, initReward, False)
@@ -394,8 +399,11 @@ if mode.__eq__("T"):
             nextState, reward, done = env.takeAction(action) # collect the results from taking the action
             print("Current High Score: {}".format(highestScore))
             print("Current Game: {}/{}".format(game, NumTrainGames))
-            env.displayInfo()
+            tick, score = env.getGameInfo()
+            print("Current Tick: {}".format(tick))
+            print("Current Score: {}".format(score))
             print("Current Reward: {}".format(reward))
+            print("Done: {}".format(done))
             print("___________________________________________")
             if savingBoardHistory:
                 env.saveBoardState(game, reward, done)
