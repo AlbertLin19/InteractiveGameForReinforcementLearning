@@ -11,7 +11,7 @@ and trained an AI to play it through reinforcement deep learning
 import numpy as np
 import random
 
-print("Which mode to run this in? (T)rain/(U)serplay/(M)odelplay")
+print("Which mode to run this in? (T)rain/(U)serplay/(M)odelplay/(W)atch")
 mode = input()
 
 class Snake():
@@ -293,7 +293,7 @@ if mode.__eq__("T") or mode.__eq__("M"):
             self.numStateInputs = numStateInputs
             self.numActions = numActions
             self.memory = deque(maxlen=2000)
-            self.gamma = 0.98    # discount rate for future events
+            self.gamma = 0.97    # discount rate for future events
             self.epsilon = 1.0  # exploration rate
             self.epsilon_min = 0.01
             self.epsilon_decay = 0.997
@@ -427,6 +427,7 @@ if mode.__eq__("T"):
         tick, score = env.getGameInfo()
         print("Current Tick: {}".format(tick))
         print("Current Score: {}".format(score))
+        print("___________________________________________")
         if savingBoardHistory:
             reward = env.getCurrentReward()
             cboardSavePath = boardSavePath+"/Game{}".format(game)
@@ -462,5 +463,18 @@ if mode.__eq__("T"):
             if savingModel:
                 player.save(modelSavePath+"/Score{}".format(highestScore))
             
-            
-        
+#%%
+'''
+functions to watch a pre-recorded game
+'''
+
+if userInput.__eq__("W"):
+    import matplotlib.animation as animation
+    fig = plt.figure()
+    import os
+    print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
+    gamePath = input()
+    for gameFolder in os.listdir(gamePath):
+        for gameTick in os.listdir(gamePath+gameFolder):
+            print("Showing: {}, {}".format(gameFolder, gameTick))
+            im = plt.imshow(np.load(gamePath+gameFolder+gameTick), animated=True)
