@@ -211,11 +211,6 @@ class Snake():
     
     def getCurrentReward(self):
         return self.maxDist-self.snakePathDistToApple()
-    
-    def saveBoardState(self, gameNum, reward, done):
-        #save board state here
-        pathName = "/Users/Albert Lin/Documents/GitHub/Game{}Tick{}".format(gameNum, self.tick)
-        #np.save(pathName, self.board)
         
     def getGameInfo(self):
         '''
@@ -340,11 +335,11 @@ if mode.__eq__("T") or mode.__eq__("M"):
             if self.epsilon > self.epsilon_min:
                 self.epsilon *= self.epsilon_decay
     
-        def load(self, name):
-            self.model.load_weights(name)
+        def load(self, path):
+            self.model.load_weights(path)
     
-        def save(self, name):
-            self.model.save_weights(name)
+        def save(self, path):
+            self.model.save_weights(path)
 
 #%%
 '''
@@ -382,11 +377,32 @@ if mode.__eq__("M"):
 running the AI to train
 '''
 if mode.__eq__("T"):
-    NumTrainGames = 20000
+    print("How many games to train for? (Default: 20,000)")
+    NumTrainGames = int(input())
     print("Starting to train the model with {} games...".format(NumTrainGames))
     
     savingBoardHistory = False
-    print("Save board history: {}".format(savingBoardHistory))
+    print("Save board history? (y/n)")
+    usrIn = input()
+    if usrIn.__eq__("y"):
+        import os
+        savingBoardHistory = True
+        print("Save to where? (path without last slash, i.e. ~ or /home/usr)")
+        boardSavePath = input()
+        print("Saving board history to: {}".format(boardSavePath))
+    else:
+        print("Not saving board history")
+        
+    savingModel = False
+    print("Save models? (y/n)")
+    usrIn = input()
+    if usrIn.__eq__("y"):
+        savingModel = True
+        print("Save to where? (path without last slash, i.e. ~ or /home/usr)")
+        modelSavePath = input()
+        print("Saving models to: {}".format(modelSavePath))
+    else:
+        print("Not saving models")
     
     env = Snake(boardSize=20, startingSize=5)
     numStateInputs = env.numStateInputs
@@ -404,8 +420,10 @@ if mode.__eq__("T"):
         print("Current Tick: {}".format(tick))
         print("Current Score: {}".format(score))
         if savingBoardHistory:
-            initReward = env.getCurrentReward
-            env.saveBoardState(game, initReward, False)
+            reward = env.getCurrentReward()
+            cboardSavePath = boardSavePath+"/Game{}".format(game)
+            os.mkdir(cboardSavePath)
+            np.save(cboardSavePath+"/Tick{}Score{}Reward{}".format(tick, score, reward), state)
         done = False
         while not done:
             action = player.act(state) # get the action the AI wants to do
@@ -419,18 +437,21 @@ if mode.__eq__("T"):
             print("Done: {}".format(done))
             print("___________________________________________")
             if savingBoardHistory:
-                env.saveBoardState(game, reward, done)
+                np.save(cboardSavePath+"/Tick{}Score{}Reward{}".format(tick, score, reward), nextState)
             player.remember(state, action, reward, nextState, done)
             state = nextState
             if len(player.memory) > batch_size:
                 print("Training AI model with memory...")
                 player.replay(batch_size)
         score = env.score
-        print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
-            
+        print("Finished Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
+        if savingBoardHistory:
+            os.rename(cboardSavePath, cboardSavePath+"Score{}".format(score))
         if score > highestScore:
             highestScore = score
-            player.save("/Users/Albert Lin/Documents/GitHub/score{}".format(highestScore)) #is this path string correct?
             print('NEW HIGH SCORE: {}!'.format(score))
-            print('implement model saving!!!')
+            if savingModel:
+                player.save(modelSavePath+"/Score{}".format(highestScore))
+            
+            
         
