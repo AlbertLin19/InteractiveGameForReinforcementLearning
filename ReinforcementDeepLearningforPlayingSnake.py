@@ -7,10 +7,10 @@ Created on Wed Jun 27 12:46:28 2018
 made a basic version of the classic game, "Snake"
 and trained an AI to play it through reinforcement deep learning
 """
-
+#%%
 import numpy as np
 import random
-#%%
+
 class Snake():
     '''
     programming the classic snake game in a simple manner
@@ -20,7 +20,7 @@ class Snake():
     the objective is to recieve the highest score possible
     
     '''
-    # velocity definition:
+    # direction definition:
     # 0 - up, 1 - right, 2 - down, 3 - left
     
     #!!! CLASS VARIABLES
@@ -29,81 +29,76 @@ class Snake():
     #score, tick
     
     #!!! NOTE:
+    # apple position and snake positions are kept in lists
+    # the state of the game is kept in the board array, which will
+    # be updated with the apple and snake positions with a call to paintBoard()
+    
+    #!!! NOTE:
     # when dealing with multi-dim arrays, use [a, b]
     # NOT [a][b], which is less efficient and can cause confusing indexing problems
     def __init__(self, boardSize=20, startingSize=4):
+        '''
+        configure a new game environment, with board size and starting size
+        initializes a few fields and calls a reset to the game
+        '''
         self.boardSize=boardSize
         self.maxDist = boardSize*np.sqrt(2)
         self.startingSize = startingSize
-        self.numStateInputs = (((boardSize**2)*2, ), (2, ), (2, ))
-        self.numActions = 3
+        self.numStateInputs = ((boardSize, boardSize, 3), )
+        self.numActions = 4
+        self.minSnakeColor = 0.5
         self.reset()
     
     def reset(self):
+        '''
+        resets size, positionList, and apple pos to new state
+        paints the board
+        sets tick and score to 0
+        make an array for body gradient
+        returns initial state
+        '''
         self.size = self.startingSize
         self.positionList = np.zeros((self.size, 2))
         #filling the position list with starting positions
         self.positionList[0:self.size, 1] = np.arange(self.size)
         self.positionList = self.positionList.astype('intp')
         self.newApplePos()
+        self.bodyGradient = np.linspace(self.minSnakeColor, 1, num=self.startingSize)
         self.paintBoard()
         self.score = 0
         self.tick = 0
-        self.velocity = 1
         self.done = False
         return self.getStateInput()
-    
-    def displayInfo(self):
-        # printing the results of this action
-        print("Current Tick: {}".format(self.tick))
-        print("Current Score: {}".format(self.score))
-        #plt.imshow(self.board, cmap='gray')
-        print(self.board)
-        #print(self.positionList)
-        #print(self.applePos)
-        #print('velocity: ' + str(self.velocity))
-        currentStateInput = self.getStateInput()
-        #print(currentStateInput[0][0])
-        print(currentStateInput[1][0])
-        print(currentStateInput[2][0])
         
     def getStateInput(self):
-        if self.velocity == 0:
-            velVector = np.asarray((-1, 0))
-        elif self.velocity == 1:
-            velVector = np.asarray((0, 1))
-        elif self.velocity == 2:
-            velVector = np.asarray((1, 0))
-        else:
-            velVector = np.asarray((0, -1))
-        displacementVect = self.applePos.astype('float32')-self.positionList[-1].astype('float32')
-        flattenedPositions = np.ndarray.flatten(self.positionList.astype('float32'))
-        fillerArray = np.linspace(-1, -1, self.numStateInputs[0][0]-np.size(self.positionList), dtype='float32')
-        combined = np.append(flattenedPositions, fillerArray)
-        return [np.reshape(combined, (1, ).__add__(self.numStateInputs[0])), np.reshape(velVector.astype('float32'), (1, ).__add__(self.numStateInputs[1])), np.reshape(displacementVect, (1, ).__add__(self.numStateInputs[2]))]
+        '''
+        returns game board
+        '''
+        return self.board
     
     def takeAction(self, action):
         '''
-        0 is turn counterclockwise, 1 is straight, 2 is turn clockwise
+        
+        inputs an action
+        0 - up, 1 - right, 2 - down, 3 - left
+        
+        updates the tick
+        adds new position
+        adds to score if apple eaten
+        trims snake down to right size
+        checks collision
+        repaints board if no collision
+        
+        returns current state, an appropriate reward, and whether game over
         '''
-        # translating the input into a change to the velocity
         self.tick+=1
-        if action == 0:
-            self.velocity -=1
-            if self.velocity < 0:
-                self.velocity = 3
-        elif action == 2:
-            self.velocity+=1
-            if self.velocity > 3:
-                self.velocity = 0
                 
-        # translating the velocity label to a vector
         # and adding the new position to the end
-        if self.velocity == 0:
+        if action == 0:
             velVector = np.asarray((-1, 0))
-        elif self.velocity == 1:
+        elif action == 1:
             velVector = np.asarray((0, 1))
-        elif self.velocity == 2:
+        elif action == 2:
             velVector = np.asarray((1, 0))
         else:
             velVector = np.asarray((0, -1))
@@ -126,16 +121,17 @@ class Snake():
         # checking if collision occured, and will repaint board if not
         if not self.done:
             self.done = self.collision()
+        
         if not self.done:
             self.paintBoard()
-            
-        
-        if self.done:
-            print('Game Over!')
         
         # returning useful info for the AI input
         reward += self.getCurrentReward()
-        return self.getStateInput(), reward, self.done, None
+        
+        if self.done:
+            reward = -100
+            
+        return self.getStateInput(), reward, self.done
         
     def collision(self):
         '''
@@ -161,7 +157,7 @@ class Snake():
         
     def newApplePos(self):
         '''
-        randomly choose an unoccupied spot to be the next apple position
+        change apple position to randomly selected one
         '''
         while True:
             randPos = np.asarray((random.randint(0, self.boardSize-1), random.randint(0, self.boardSize-1)), dtype='intp')
@@ -175,10 +171,19 @@ class Snake():
         mapping the locations
         in positionList and applePos
         to the board
+        using a gradient for the snake body to indicate body path
+        updates the gradient if necessary
+        
+        apple is red, snake is green, head is blue
         '''
-        self.board = np.zeros((self.boardSize, self.boardSize))
-        self.board[self.positionList[:, 0], self.positionList[:, 1]] = 1
-        self.board[self.applePos[0], self.applePos[1]] = 0.5
+        self.board = np.zeros((self.boardSize, self.boardSize, 3), dtype='float32')
+        
+        # creating a gradient for snake body
+        if self.positionList.size/2 != self.bodyGradient.size:
+            self.bodyGradient = np.linspace(self.minSnakeColor, 1, num=self.positionList.size/2, dtype='float32')
+        self.board[self.positionList[:-1, 0], self.positionList[:-1, 1], 1] = self.bodyGradient[:-1]
+        self.board[self.positionList[-1, 0], self.positionList[-1, 1], 2] = 1
+        self.board[self.applePos[0], self.applePos[1], 0] = 1
         
     def snakeDistToApple(self):
         '''
@@ -195,26 +200,56 @@ class Snake():
         #save board state here
         pathName = "/Users/Albert Lin/Documents/GitHub/Game{}Tick{}".format(gameNum, self.tick)
         #np.save(pathName, self.board)
+        
+    def getGameInfo(self):
+        '''
+        returns tick, score, and board
+        '''
+        
+        return self.tick, self.score, self.board
 
 #%%
 '''
 
 testing the snake program with user input
 
-
-env = Snake(boardSize=20, startingSize=4);
-env.displayInfo()
-while True:
-    userInput = float(input())
-    print('inputted is: ' + str(userInput))
-    if (userInput != 0 and userInput != 1 and userInput !=2):
-        print('game exited')
-        break
-    else:
-        print('inputting next step')
-        env.takeAction(userInput)
-        env.displayInfo()
+NOTE: necessary to use plt.pause() for a crude animation
+since it takes time to plot - better method is to use matplotlib's animation tools
+or put it on another thread perhaps?
 '''
+import matplotlib.pyplot as plt
+playing = True
+while playing:
+    print("Starting new game...")
+    env = Snake(boardSize=20, startingSize=4);
+    tick, score, board = env.getGameInfo()
+    print("Current Tick: {}".format(tick))
+    print("Current Score: {}".format(score))
+    imgplot = plt.imshow(board)
+    plt.pause(0.001)
+    alive = True
+    while alive:
+        print("type 0, 1, 2, or 3")
+        userInput = float(input())
+        print('inputted is: ' + str(userInput))
+        if (userInput != 0 and userInput != 1 and userInput !=2 and userInput!=3):
+            print('bad input: ' + str(userInput))
+        else:
+            print('inputting next step')
+            state, reward, done = env.takeAction(userInput)
+            imgplot = plt.imshow(state)
+            plt.pause(0.001)
+        if done:
+            alive = False
+            
+    print('game over')
+    print('restart? (y)')
+    userInput = input()
+    if (userInput.__eq__("y")):
+        print("playing again")
+    else:
+        print("quitting")
+        playing = False
 #%%
 '''
 This AI model for Deep-Q Learning comes originally from
@@ -234,7 +269,7 @@ class AIPlayer:
         self.numStateInputs = numStateInputs
         self.numActions = numActions
         self.memory = deque(maxlen=2000)
-        self.gamma = 0.97    # discount rate
+        self.gamma = 0.98    # discount rate for future events
         self.epsilon = 1.0  # exploration rate
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.997
@@ -335,11 +370,10 @@ for game in range(NumTrainGames):
     done = False
     while not done:
         action = player.act(state) # get the action the AI wants to do
-        nextState, reward, done, _ = env.takeAction(action) # collect the results from taking the action
+        nextState, reward, done = env.takeAction(action) # collect the results from taking the action
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
         env.displayInfo()
-        reward = reward if not done else -100 # keep reward unless game ended
         print("Current Reward: {}".format(reward))
         print("___________________________________________")
         if savingBoardHistory:
