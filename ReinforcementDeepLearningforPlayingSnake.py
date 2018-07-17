@@ -468,13 +468,20 @@ if mode.__eq__("T"):
 functions to watch a pre-recorded game
 '''
 
-if userInput.__eq__("W"):
+if mode.__eq__("W"):
+    import matplotlib.pyplot as plt
     import matplotlib.animation as animation
     fig = plt.figure()
     import os
     print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
     gamePath = input()
+    #!!! FIRST LOAD ALL DATA INTO ANIMATOR, THEN PLAY ANIMATION
+    images = []
     for gameFolder in os.listdir(gamePath):
-        for gameTick in os.listdir(gamePath+gameFolder):
-            print("Showing: {}, {}".format(gameFolder, gameTick))
-            im = plt.imshow(np.load(gamePath+gameFolder+gameTick), animated=True)
+        for gameTick in os.listdir(gamePath+"\\"+gameFolder):
+            print("Loading: {} {}".format(gameFolder, gameTick))
+            im = plt.imshow(np.load(gamePath+"\\"+gameFolder+"\\"+gameTick)[0], animated=True)
+            images.append([im])
+    ani = animation.ArtistAnimation(fig, images, interval=50, blit=True, repeat_delay=1000)
+    #ani.save(path)
+    plt.show()
