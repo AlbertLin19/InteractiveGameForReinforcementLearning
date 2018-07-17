@@ -103,13 +103,14 @@ class Snake():
         self.tick+=1
                 
         # and adding the new position to the end
+        assert action == 0 or action == 1 or action == 2 or action == 3, "Error: only actions 0-3 are allowed!"
         if action == 0:
             velVector = np.asarray((-1, 0))
         elif action == 1:
             velVector = np.asarray((0, 1))
         elif action == 2:
             velVector = np.asarray((1, 0))
-        else:
+        elif action == 3:
             velVector = np.asarray((0, -1))
         self.positionList = np.vstack((self.positionList, (self.positionList[-1]+velVector)))
         
@@ -377,6 +378,7 @@ if mode.__eq__("M"):
 running the AI to train
 '''
 if mode.__eq__("T"):
+    import os
     print("How many games to train for? (Default: 20,000)")
     NumTrainGames = int(input())
     print("Starting to train the model with {} games...".format(NumTrainGames))
@@ -385,7 +387,6 @@ if mode.__eq__("T"):
     print("Save board history? (y/n)")
     usrIn = input()
     if usrIn.__eq__("y"):
-        import os
         savingBoardHistory = True
         print("Save to where? (path without last slash, i.e. ~ or /home/usr)")
         boardSavePath = input()
