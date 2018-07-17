@@ -243,6 +243,11 @@ if mode.__eq__("U"):
             else:
                 print('inputting next step')
                 state, reward, done = env.takeAction(userInput)
+                tick, score, board = env.getGameInfo()
+                print("Current Tick: {}".format(tick))
+                print("Current Score: {}".format(score))
+                print("Current Reward: {}".format(reward))
+                print("Done: {}".format(done))
                 imgplot = plt.imshow(state)
                 plt.pause(0.001)
             if done:
