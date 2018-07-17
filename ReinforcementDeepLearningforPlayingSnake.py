@@ -96,6 +96,9 @@ class Snake():
         repaints board if no collision
         
         returns current state, an appropriate reward, and whether game over
+        
+        if action tries to move backwards, then reward will be negative
+        but snake will continue to move forward
         '''
         self.tick+=1
                 
@@ -109,6 +112,12 @@ class Snake():
         else:
             velVector = np.asarray((0, -1))
         self.positionList = np.vstack((self.positionList, (self.positionList[-1]+velVector)))
+        
+        # check if snake went backwards, correct path if so
+        wentBackwards = False
+        if np.array_equal(self.positionList[-1], self.positionList[-3]):
+            wentBackwards = True
+            self.positionList[-1] = self.positionList[-2]*2-self.positionList[-3]
         
         # checking if an apple was eaten
         # adjusting size and selecting a new apple position if needed
@@ -134,7 +143,7 @@ class Snake():
         # returning useful info for the AI input
         reward += self.getCurrentReward()
         
-        if self.done:
+        if self.done or wentBackwards:
             reward = -100
             
         return self.getStateInput(), reward, self.done
@@ -232,11 +241,11 @@ if mode.__eq__("U"):
     while playing:
         print("Starting new game...")
         env = Snake(boardSize=20, startingSize=4);
-        board = env.reset()
+        state = env.reset()
         tick, score = env.getGameInfo()
         print("Current Tick: {}".format(tick))
         print("Current Score: {}".format(score))
-        imgplot = plt.imshow(board)
+        imgplot = plt.imshow(state[0])
         plt.pause(0.001)
         alive = True
         while alive:
@@ -253,7 +262,7 @@ if mode.__eq__("U"):
                 print("Current Score: {}".format(score))
                 print("Current Reward: {}".format(reward))
                 print("Done: {}".format(done))
-                imgplot = plt.imshow(state)
+                imgplot = plt.imshow(state[0])
                 plt.pause(0.001)
             if done:
                 alive = False
@@ -414,6 +423,7 @@ if mode.__eq__("T"):
             player.remember(state, action, reward, nextState, done)
             state = nextState
             if len(player.memory) > batch_size:
+                print("Training AI model with memory...")
                 player.replay(batch_size)
         score = env.score
         print("Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
