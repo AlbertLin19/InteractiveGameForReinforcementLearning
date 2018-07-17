@@ -76,8 +76,11 @@ class Snake():
     def getStateInput(self):
         '''
         returns game board
+        IMPORTANT NOTE:
+            need to supply inputs as (samples, dim, dim, ..., features)
+            as ONE array, not a tuple of arrays
         '''
-        return self.board
+        return np.reshape(self.board, (1, ).__add__(self.numStateInputs[0]))
     
     def takeAction(self, action):
         '''
