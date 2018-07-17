@@ -273,7 +273,7 @@ defining the AI training model
 
 if mode.__eq__("T") or mode.__eq__("M"):
     print("Loading AI model class...")
-    from keras import layers, optimizers, Input, Model
+    from keras import layers, optimizers, models
     from collections import deque
     
     class AIPlayer:
@@ -292,17 +292,14 @@ if mode.__eq__("T") or mode.__eq__("M"):
     
         def getModel(self):
             # Neural Net for Deep-Q learning Model
-            positionInput = Input(shape=self.numStateInputs[0])
-            positionOutput = layers.Dense(16, activation='relu')(positionInput)
-            positionOutput = layers.Dense(32, activation='relu')(positionOutput)
-            velInput = Input(shape=self.numStateInputs[1])
-            velOutput = layers.Dense(32, activation='relu')(velInput)
-            appleInput = Input(shape=self.numStateInputs[2])
-            appleOutput = layers.Dense(32, activation='relu')(appleInput)
-            concatenated = layers.concatenate([positionOutput, velOutput, appleOutput], axis=-1)
-            actionOutput = layers.Dense(32, activation='relu')(concatenated)
-            actionOutput = layers.Dense(self.numActions, activation='linear')(actionOutput)
-            model = Model([positionInput, velInput, appleInput], actionOutput)
+            model = models.Sequential()
+            model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=self.numStateInputs[0]))
+            model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+            model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+            #now to flatten the list of 3D vectors into a list of 1D vectors for Dense layers
+            model.add(layers.Flatten())
+            model.add(layers.Dense(32, activation='relu'))
+            model.add(layers.Dense(self.numActions, activation='softmax'))
             model.compile(loss='mse',
                           optimizer=optimizers.Adam(lr=self.learning_rate))
             return model
@@ -342,7 +339,7 @@ let a trained model play with the following functions
 if mode.__eq__("M"):
     print("Loading functions to load and play with a pre-trained AI model")
     def playSnake(player):
-        gameEnv = Snake(boardSize=20, startingSize=5)
+        gameEnv = Snake(boardSize=20, startingSize=4)
         state = gameEnv.reset() # get initial state
         gameEnv.displayInfo()
         done = False
@@ -356,8 +353,15 @@ if mode.__eq__("M"):
             state = nextState
         print("Score: {}".format(gameEnv.score))
         
-    def loadTrainedModelWeights(player, path="/Users/Albert Lin/Documents/GitHub/score10"):
-        player.load(path)
+    print("Type full path to model save that you wish to load: ")
+    path = input()
+    print("Loading from: {}".format(path))
+    numStateInputs = env.numStateInputs
+    numActions = env.numActions
+    player = AIPlayer(numStateInputs, numActions)
+    player.load(path)
+    print("Playing Snake with loaded model...")
+    playSnake(player)
     
 #%%
 '''
