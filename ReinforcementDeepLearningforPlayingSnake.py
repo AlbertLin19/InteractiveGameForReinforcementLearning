@@ -309,7 +309,7 @@ if mode.__eq__("T") or mode.__eq__("M"):
             #now to flatten the list of 3D vectors into a list of 1D vectors for Dense layers
             model.add(layers.Flatten())
             model.add(layers.Dense(32, activation='relu'))
-            model.add(layers.Dense(self.numActions, activation='softmax'))
+            model.add(layers.Dense(self.numActions, activation='linear'))
             model.compile(loss='mse',
                           optimizer=optimizers.Adam(lr=self.learning_rate))
             return model
