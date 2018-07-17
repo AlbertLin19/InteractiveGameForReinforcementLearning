@@ -317,8 +317,9 @@ if mode.__eq__("T") or mode.__eq__("M"):
         def remember(self, state, action, reward, next_state, done):
             self.memory.append((state, action, reward, next_state, done))
     
-        def act(self, state):
-            if np.random.rand() <= self.epsilon:
+        def act(self, state, exploring=True):
+            if np.random.rand() <= self.epsilon and exploring:
+                print("Exploring!")
                 return random.randrange(self.numActions)
             actionValues = self.model.predict(state)
             return np.argmax(actionValues[0])  # returns action
@@ -354,7 +355,7 @@ if mode.__eq__("M"):
         gameEnv.displayInfo()
         done = False
         while not done:
-            action = player.act(state) # get the action the AI wants to do
+            action = player.act(state, exploring=False) # get the action the AI wants to do
             nextState, reward, done, _ = gameEnv.takeAction(action) # collect the results from taking the action
             gameEnv.displayInfo()
             reward = reward if not done else -100 # keep reward unless game ended
@@ -428,6 +429,7 @@ if mode.__eq__("T"):
         done = False
         while not done:
             action = player.act(state) # get the action the AI wants to do
+            print("Taking action: {}".format(action))
             nextState, reward, done = env.takeAction(action) # collect the results from taking the action
             print("Current High Score: {}".format(highestScore))
             print("Current Game: {}/{}".format(game, NumTrainGames))
