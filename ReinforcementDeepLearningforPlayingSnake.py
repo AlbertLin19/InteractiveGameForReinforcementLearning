@@ -56,7 +56,7 @@ class Snake():
         '''
         resets size, positionList, and apple pos to new state
         paints the board
-        sets tick and score to 0
+        sets tick and score to 1 and 0 respectively
         make an array for body gradient
         returns initial state
         '''
@@ -69,7 +69,7 @@ class Snake():
         self.bodyGradient = np.linspace(self.minSnakeColor, 1, num=self.startingSize)
         self.paintBoard()
         self.score = 0
-        self.tick = 0
+        self.tick = 1
         self.done = False
         return self.getStateInput()
         
@@ -422,7 +422,7 @@ if mode.__eq__("T"):
     batch_size = 64
     highestScore = 0
     
-    for game in range(NumTrainGames):
+    for game in range(1, NumTrainGames+1):
         state = env.reset() # get initial state
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
@@ -434,7 +434,7 @@ if mode.__eq__("T"):
             reward = env.getCurrentReward()
             cboardSavePath = boardSavePath+"/Game{:06d}".format(game)
             os.mkdir(cboardSavePath)
-            np.save(cboardSavePath+"/Tick{:05d}Score{}Reward{}".format(tick, score, reward), state)
+            np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), state)
         done = False
         while not done:
             action = player.act(state) # get the action the AI wants to do
@@ -449,7 +449,7 @@ if mode.__eq__("T"):
             print("Done: {}".format(done))
             print("___________________________________________")
             if savingBoardHistory:
-                np.save(cboardSavePath+"/Tick{:05d}Score{}Reward{}".format(tick, score, reward), nextState)
+                np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState)
             player.remember(state, action, reward, nextState, done)
             state = nextState
             if len(player.memory) > batch_size:
@@ -458,12 +458,12 @@ if mode.__eq__("T"):
         score = env.score
         print("Finished Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
         if savingBoardHistory:
-            os.rename(cboardSavePath, cboardSavePath+"Score{}".format(score))
+            os.rename(cboardSavePath, cboardSavePath+"Score{:03d}".format(score))
         if score > highestScore:
             highestScore = score
             print('NEW HIGH SCORE: {}!'.format(score))
             if savingModel:
-                player.save(modelSavePath+"/Score{:04d}".format(highestScore))
+                player.save(modelSavePath+"/Score{:03d}".format(highestScore))
             
 #%%
 '''
@@ -473,7 +473,7 @@ functions to watch a pre-recorded game
 if mode.__eq__("W"):
     import matplotlib.pyplot as plt
     import matplotlib.animation as animation
-    fig = plt.figure()
+    fig, title = plt.subplots()
     import os
     print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
     gamePath = input()
@@ -483,7 +483,8 @@ if mode.__eq__("W"):
         for gameTick in os.listdir(gamePath+"\\"+gameFolder):
             print("Loading: {} {}".format(gameFolder, gameTick))
             im = plt.imshow(np.load(gamePath+"\\"+gameFolder+"\\"+gameTick)[0], animated=True)
-            images.append([im])
-    ani = animation.ArtistAnimation(fig, images, interval=50, blit=True, repeat_delay=1000)
+            text = title.text(0.5, 19, 'G: '+gameFolder[4:10]+' T: '+gameTick[4:9]+' S: '+gameTick[14:17]+' R: '+gameTick[23:-4], size='x-large', va='bottom', ha='left', color='w')
+            images.append([im, text])
+    ani = animation.ArtistAnimation(fig, images, interval=25, blit=True, repeat=False)
     #ani.save(path)
     plt.show()
