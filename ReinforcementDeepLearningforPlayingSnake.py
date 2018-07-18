@@ -430,9 +430,9 @@ if mode.__eq__("T"):
         print("___________________________________________")
         if savingBoardHistory:
             reward = env.getCurrentReward()
-            cboardSavePath = boardSavePath+"/Game{}".format(game)
+            cboardSavePath = boardSavePath+"/Game{:06d}".format(game)
             os.mkdir(cboardSavePath)
-            np.save(cboardSavePath+"/Tick{}Score{}Reward{}".format(tick, score, reward), state)
+            np.save(cboardSavePath+"/Tick{:05d}Score{}Reward{}".format(tick, score, reward), state)
         done = False
         while not done:
             action = player.act(state) # get the action the AI wants to do
@@ -447,7 +447,7 @@ if mode.__eq__("T"):
             print("Done: {}".format(done))
             print("___________________________________________")
             if savingBoardHistory:
-                np.save(cboardSavePath+"/Tick{}Score{}Reward{}".format(tick, score, reward), nextState)
+                np.save(cboardSavePath+"/Tick{:05d}Score{}Reward{}".format(tick, score, reward), nextState)
             player.remember(state, action, reward, nextState, done)
             state = nextState
             if len(player.memory) > batch_size:
@@ -461,7 +461,7 @@ if mode.__eq__("T"):
             highestScore = score
             print('NEW HIGH SCORE: {}!'.format(score))
             if savingModel:
-                player.save(modelSavePath+"/Score{}".format(highestScore))
+                player.save(modelSavePath+"/Score{:04d}".format(highestScore))
             
 #%%
 '''
