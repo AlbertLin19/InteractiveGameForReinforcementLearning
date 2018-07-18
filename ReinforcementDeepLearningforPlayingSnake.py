@@ -128,7 +128,7 @@ class Snake():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-                reward+=300
+                reward+=200
         
         # trimming the position list if too big
         if len(self.positionList) > self.size:
@@ -144,8 +144,10 @@ class Snake():
         # returning useful info for the AI input
         reward += self.getCurrentReward()
         
-        if self.done or wentBackwards:
-            reward = -100
+        if wentBackwards:
+            reward = -10
+        if self.done:
+            reward = -80
             
         return self.getStateInput(), reward, self.done
         
