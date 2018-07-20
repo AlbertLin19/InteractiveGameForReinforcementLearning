@@ -53,7 +53,6 @@ class Snake():
         initializes a few fields and calls a reset to the game
         '''
         self.boardSize=boardSize
-        self.maxDist = (boardSize-1)*2
         self.startingSize = startingSize
         if modeltype==1:
             self.numStateInputs = ((boardSize, boardSize, 3), )
@@ -148,7 +147,7 @@ class Snake():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-                reward+=300
+                reward+=10
         
         # trimming the position list if too big
         if len(self.positionList) > self.size:
@@ -165,9 +164,9 @@ class Snake():
         reward += self.getCurrentReward()
         
         if wentBackwards:
-            reward = -10
+            reward = -5
         if self.done:
-            reward = -100
+            reward = -10
             
         return self.getStateInput(), reward, self.done
         
@@ -223,17 +222,20 @@ class Snake():
         self.board[self.positionList[-1, 0], self.positionList[-1, 1], 2] = 1
         self.board[self.applePos[0], self.applePos[1], 0] = 1
         
-    def snakePathDistToApple(self):
+    def PosDistToApple(self, position):
         '''
-        calculate sum of magnitude of displacement vectors between apple and snake
+        calculate sum of magnitude of displacement vectors between apple and position
         (path distance)
         '''
-        a = self.positionList[-1][0]-self.applePos[0]
-        b = self.positionList[-1][1]-self.applePos[1]
+        a = position[0]-self.applePos[0]
+        b = position[1]-self.applePos[1]
         return abs(a)+abs(b)
     
     def getCurrentReward(self):
-        return self.maxDist-self.snakePathDistToApple()
+        if self.PosDistToApple(self.positionList[-1]) < self.PosDistToApple(self.positionList[-2]):
+            return 1
+        else:
+            return -1
         
     def getGameInfo(self):
         '''

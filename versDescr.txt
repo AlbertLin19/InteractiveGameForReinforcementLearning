@@ -1,1 +1,9 @@
 03 session is model 1
+04 session is model 2
+
+the above are with -80 and 200 reward, 20000 mem, 32 batch, 0.9988 decay, 0.97 discount (gamma)
+0.001 learning rate, conv 16, 1; conv 16, 3, strides=2; conv 32, 3, strides=2; flatten; dense 256; dense 4
+
+and multiinput had additionally dense 16 and dense 16
+
+05 sess is model 2, with no boardhistory bc 6000 games, reward changed to -100 and 300
