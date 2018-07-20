@@ -419,41 +419,44 @@ if mode.__eq__("M"):
         else:
             print("Not saving board history")
         
+        print("How many games should be played?")
+        numGames = int(input())
         env = Snake(boardSize=20, startingSize=4)
-        state = env.reset() # get initial state
-        tick, score = env.getGameInfo()
-        print("Current Tick: {}".format(tick))
-        print("Current Score: {}".format(score))
-        reward = env.getCurrentReward()
-        print("Current Reward: {}".format(reward))
-        print("___________________________________________")
-        if savingBoardHistory:
-            cboardSavePath = boardSavePath+"/Game{:06d}".format(game)
-            os.mkdir(cboardSavePath)
-            if modeltype == 1:
-                np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), state)
-            else:
-                np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), state[0])
-        done = False
-        while not done:
-            action = player.act(state, exploring=False) # get the action the AI wants to do
-            print("Taking action: {}".format(action))
-            nextState, reward, done = env.takeAction(action) # collect the results from taking the action
+        for game in range(1, numGames+1):
+            state = env.reset() # get initial state
             tick, score = env.getGameInfo()
             print("Current Tick: {}".format(tick))
             print("Current Score: {}".format(score))
+            reward = env.getCurrentReward()
             print("Current Reward: {}".format(reward))
             print("___________________________________________")
             if savingBoardHistory:
+                cboardSavePath = boardSavePath+"/Game{:06d}".format(game)
+                os.mkdir(cboardSavePath)
                 if modeltype == 1:
-                    np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState)
+                    np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), state)
                 else:
-                    np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState[0])
-        state = nextState
-        score = env.score
-        if savingBoardHistory:
-            os.rename(cboardSavePath, cboardSavePath+"Score{:03d}".format(score))
-        print("Final Score: {}".format(env.score))
+                    np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), state[0])
+            done = False
+            while not done:
+                action = player.act(state, exploring=False) # get the action the AI wants to do
+                print("Taking action: {}".format(action))
+                nextState, reward, done = env.takeAction(action) # collect the results from taking the action
+                tick, score = env.getGameInfo()
+                print("Current Tick: {}".format(tick))
+                print("Current Score: {}".format(score))
+                print("Current Reward: {}".format(reward))
+                print("___________________________________________")
+                if savingBoardHistory:
+                    if modeltype == 1:
+                        np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState)
+                    else:
+                        np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState[0])
+                state = nextState
+            score = env.score
+            if savingBoardHistory:
+                os.rename(cboardSavePath, cboardSavePath+"Score{:03d}".format(score))
+            print("Final Score: {}".format(env.score))
         
     print("Type full path to model save that you wish to load: ")
     path = input()
