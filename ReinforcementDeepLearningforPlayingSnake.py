@@ -412,6 +412,7 @@ if mode.__eq__("M"):
         print("Save board history? (y/n)")
         usrIn = input()
         if usrIn.__eq__("y"):
+            import os
             savingBoardHistory = True
             print("Save to where? (path without last slash, i.e. ~ or /home/usr)")
             boardSavePath = input()

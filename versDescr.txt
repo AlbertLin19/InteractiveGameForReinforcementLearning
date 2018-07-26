@@ -7,3 +7,5 @@ the above are with -80 and 200 reward, 20000 mem, 32 batch, 0.9988 decay, 0.97 d
 and multiinput had additionally dense 16 and dense 16
 
 05 sess is model 2, with no boardhistory bc 6000 games, reward changed to -100 and 300
+
+since 05 just resulted in loops, 06 will have the new reward system +- 1
