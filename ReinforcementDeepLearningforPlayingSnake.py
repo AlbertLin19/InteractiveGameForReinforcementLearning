@@ -151,7 +151,7 @@ class Snake():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-                reward = 10
+                reward = 30
         
         # trimming the position list if too big
         if len(self.positionList) > self.size:
@@ -169,7 +169,7 @@ class Snake():
         if wentBackwards:
             reward = -5
         if self.done:
-            reward = -10
+            reward = -30
             
         return self.getStateInput(), reward, self.done
         
