@@ -582,14 +582,21 @@ if mode.__eq__("W"):
     import os
     print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
     gamePath = input()
+    print("Save animation? (y/n)")
+    isSaving = input()
+    if isSaving.__eq__('y'):
+        isSaving = True
+    else:
+        isSaving = False
     #!!! FIRST LOAD ALL DATA INTO ANIMATOR, THEN PLAY ANIMATION
     images = []
     for gameFolder in os.listdir(gamePath):
-        for gameTick in os.listdir(gamePath+"\\"+gameFolder):
+        for gameTick in os.listdir(gamePath+"/"+gameFolder):
             print("Loading: {} {}".format(gameFolder, gameTick))
-            im = plt.imshow(np.load(gamePath+"\\"+gameFolder+"\\"+gameTick)[0], animated=True)
+            im = plt.imshow(np.load(gamePath+"/"+gameFolder+"/"+gameTick)[0], animated=True)
             text = title.text(0.5, 19, 'G: '+gameFolder[4:10]+' T: '+gameTick[4:9]+' S: '+gameTick[14:17]+' R: '+gameTick[23:-4], size='x-large', va='bottom', ha='left', color='w')
             images.append([im, text])
     ani = animation.ArtistAnimation(fig, images, interval=25, blit=True, repeat_delay=1000)
-    #ani.save(path)
+    if isSaving:
+        ani.save(gamePath+'/animation.mp4')
     plt.show()
