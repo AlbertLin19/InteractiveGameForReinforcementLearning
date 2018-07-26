@@ -598,5 +598,6 @@ if mode.__eq__("W"):
             images.append([im, text])
     ani = animation.ArtistAnimation(fig, images, interval=25, blit=True, repeat_delay=1000)
     if isSaving:
-        ani.save(gamePath+'/animation.mp4')
+        movieWriter = animation.FFMpegWriter(fps=30)
+        ani.save(gamePath+'/animation.mp4', writer=movieWriter)
     plt.show()
