@@ -380,7 +380,7 @@ if mode.__eq__("T") or mode.__eq__("M"):
     
         def act(self, state, exploring=True):
             if np.random.rand() <= self.epsilon and exploring:
-                print("Exploring!")
+                #print("Exploring!")
                 return random.randrange(self.numActions)
             actionValues = self.model.predict(state)
             return np.argmax(actionValues[0])  # returns action
@@ -517,11 +517,11 @@ if mode.__eq__("T"):
         print("Current High Score: {}".format(highestScore))
         print("Current Game: {}/{}".format(game, NumTrainGames))
         tick, score = env.getGameInfo()
-        print("Current Tick: {}".format(tick))
-        print("Current Score: {}".format(score))
+        #print("Current Tick: {}".format(tick))
+        #print("Current Score: {}".format(score))
         reward = env.getCurrentReward()
-        print("Current Reward: {}".format(reward))
-        print("___________________________________________")
+        #print("Current Reward: {}".format(reward))
+        #print("___________________________________________")
         if savingBoardHistory:
             cboardSavePath = boardSavePath+"/Game{:06d}".format(game)
             os.mkdir(cboardSavePath)
@@ -532,16 +532,16 @@ if mode.__eq__("T"):
         done = False
         while not done:
             action = player.act(state) # get the action the AI wants to do
-            print("Taking action: {}".format(action))
+            #print("Taking action: {}".format(action))
             nextState, reward, done = env.takeAction(action) # collect the results from taking the action
-            print("Current High Score: {}".format(highestScore))
-            print("Current Game: {}/{}".format(game, NumTrainGames))
+            #print("Current High Score: {}".format(highestScore))
+            #print("Current Game: {}/{}".format(game, NumTrainGames))
             tick, score = env.getGameInfo()
-            print("Current Tick: {}".format(tick))
-            print("Current Score: {}".format(score))
-            print("Current Reward: {}".format(reward))
-            print("Done: {}".format(done))
-            print("___________________________________________")
+            #print("Current Tick: {}".format(tick))
+            #print("Current Score: {}".format(score))
+            #print("Current Reward: {}".format(reward))
+            #print("Done: {}".format(done))
+            #print("___________________________________________")
             if savingBoardHistory:
                 if modeltype == 1:
                     np.save(cboardSavePath+"/Tick{:05d}Score{:03d}Reward{:03d}".format(tick, score, reward), nextState)
