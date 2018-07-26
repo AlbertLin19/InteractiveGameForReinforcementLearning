@@ -578,16 +578,24 @@ functions to watch a pre-recorded game
 if mode.__eq__("W"):
     import matplotlib.pyplot as plt
     import matplotlib.animation as animation
-    fig, title = plt.subplots()
     import os
     print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
     gamePath = input()
+    print("Watch animation? (y/n)")
+    isWatching = input()
+    if isWatching.__eq__('y'):
+        isWatching = True
+    else:
+        isWatching = False
     print("Save animation? (y/n)")
     isSaving = input()
     if isSaving.__eq__('y'):
         isSaving = True
     else:
         isSaving = False
+        
+    if isWatching:
+        fig, title = plt.subplots()
     #!!! FIRST LOAD ALL DATA INTO ANIMATOR, THEN PLAY ANIMATION
     images = []
     for gameFolder in os.listdir(gamePath):
@@ -600,4 +608,5 @@ if mode.__eq__("W"):
     if isSaving:
         movieWriter = animation.FFMpegWriter(fps=30)
         ani.save(gamePath+'/animation.mp4', writer=movieWriter)
-    plt.show()
+    if isWatching:
+        plt.show()
