@@ -583,11 +583,7 @@ if mode.__eq__("W"):
     gamePath = input()
     print("Watch animation? (y/n)")
     isWatching = input()
-    if isWatching.__eq__('y'):
-        isWatching = True
-    else:
-        isWatching = False
-    if not isWatching:
+    if not isWatching.__eq__('y'):
         matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     print("Save animation? (y/n)")
@@ -597,8 +593,7 @@ if mode.__eq__("W"):
     else:
         isSaving = False
         
-    if isWatching:
-        fig, title = plt.subplots()
+    fig, title = plt.subplots()
     #!!! FIRST LOAD ALL DATA INTO ANIMATOR, THEN PLAY ANIMATION
     images = []
     for gameFolder in os.listdir(gamePath):
@@ -611,5 +606,4 @@ if mode.__eq__("W"):
     if isSaving:
         movieWriter = animation.FFMpegWriter(fps=30)
         ani.save(gamePath+'/animation.mp4', writer=movieWriter)
-    if isWatching:
-        plt.show()
+    plt.show()
