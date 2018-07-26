@@ -501,6 +501,8 @@ if mode.__eq__("T"):
         print("Save to where? (path without last slash, i.e. ~ or /home/usr)")
         modelSavePath = input()
         print("Saving models to: {}".format(modelSavePath))
+        print("At what intervals should models be saved regularly?")
+        saveInterval = int(input())
     else:
         print("Not saving models")
     
@@ -560,7 +562,9 @@ if mode.__eq__("T"):
             highestScore = score
             print('NEW HIGH SCORE: {}!'.format(score))
             if savingModel:
-                player.save(modelSavePath+"/Score{:03d}".format(highestScore))
+                player.save(modelSavePath+"/Game{:06d}HighScore{:03d}".format(game, highestScore))
+        if game % saveInterval == 0:
+            player.save(modelSavePath+"/Game{:06d}Score{:03d}".format(game, score))
     # save the last model once training is over
     if savingModel:
         print("Saving final model now that training is over!")
