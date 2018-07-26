@@ -576,7 +576,7 @@ functions to watch a pre-recorded game
 '''
 
 if mode.__eq__("W"):
-    import matplotlib.pyplot as plt
+    import matplotlib
     import matplotlib.animation as animation
     import os
     print("Where to watch games from? (path without last slash, i.e. ~ or /home/usr)")
@@ -587,6 +587,9 @@ if mode.__eq__("W"):
         isWatching = True
     else:
         isWatching = False
+    if not isWatching:
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     print("Save animation? (y/n)")
     isSaving = input()
     if isSaving.__eq__('y'):
