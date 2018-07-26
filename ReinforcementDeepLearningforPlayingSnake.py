@@ -139,15 +139,19 @@ class Snake():
             wentBackwards = True
             self.positionList[-1] = self.positionList[-2]*2-self.positionList[-3]
         
+        
+        # returning useful info for the AI input
+        reward = self.getCurrentReward()
+        
         # checking if an apple was eaten
         # adjusting size and selecting a new apple position if needed
         # add to reward if eaten
-        reward = 0
+        
         if self.ateApple():
                 self.score+=1
                 self.size+=1
                 self.newApplePos()
-                reward+=10
+                reward = 10
         
         # trimming the position list if too big
         if len(self.positionList) > self.size:
@@ -160,8 +164,7 @@ class Snake():
         if not self.done:
             self.paintBoard()
         
-        # returning useful info for the AI input
-        reward += self.getCurrentReward()
+        
         
         if wentBackwards:
             reward = -5
