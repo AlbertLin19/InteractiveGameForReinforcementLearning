@@ -59,7 +59,7 @@ class Snake():
         else:
             self.numStateInputs = ((boardSize, boardSize, 3), (4, ), (2, ))
         self.numActions = 4
-        self.minSnakeColor = 0.5
+        self.minSnakeColor = 0.3
         self.reset()
     
     def reset(self):
