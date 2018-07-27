@@ -182,7 +182,7 @@ class Snake():
         currentPos = positionList[-1]
         if any(np.array_equal(pos, currentPos) for pos in positionList[:-1])\
         or any(currentPos[:] < 0) or any(self.boardSize <= currentPos[:]):
-            print('collision detected')
+            #print('collision detected')
             return True
         else:
             return False
@@ -192,7 +192,7 @@ class Snake():
         check to see whether an apple was eaten
         '''
         if (np.array_equal(self.positionList[-1], self.applePos)):
-            print('ate an apple')
+            #print('ate an apple')
             return True
         
     def newApplePos(self):
@@ -203,7 +203,7 @@ class Snake():
             randPos = np.asarray((random.randint(0, self.boardSize-1), random.randint(0, self.boardSize-1)), dtype='intp')
             if not any(np.array_equal(pos, randPos) for pos in self.positionList[:]):
                 self.applePos = randPos
-                print('new apple location selected')
+                #print('new apple location selected')
                 break
             
     def paintBoard(self):
@@ -552,7 +552,7 @@ if mode.__eq__("T"):
             player.remember(state, action, reward, nextState, done)
             state = nextState
             if len(player.memory) > batch_size:
-                print("Training AI model with memory...")
+                #print("Training AI model with memory...")
                 player.replay(batch_size)
         score = env.score
         print("Finished Game: {}/{}, score: {}, epsilon: {:.2}".format(game, NumTrainGames, score, player.epsilon))
@@ -596,8 +596,8 @@ if mode.__eq__("W"):
     fig, title = plt.subplots()
     #!!! FIRST LOAD ALL DATA INTO ANIMATOR, THEN PLAY ANIMATION
     images = []
-    for gameFolder in os.listdir(gamePath):
-        for gameTick in os.listdir(gamePath+"/"+gameFolder):
+    for gameFolder in sorted(os.listdir(gamePath)):
+        for gameTick in sorted(os.listdir(gamePath+"/"+gameFolder)):
             print("Loading: {} {}".format(gameFolder, gameTick))
             im = plt.imshow(np.load(gamePath+"/"+gameFolder+"/"+gameTick)[0], animated=True)
             text = title.text(0.5, 19, 'G: '+gameFolder[4:10]+' T: '+gameTick[4:9]+' S: '+gameTick[14:17]+' R: '+gameTick[23:-4], size='x-large', va='bottom', ha='left', color='w')
