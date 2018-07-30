@@ -410,7 +410,7 @@ let a trained model play with the following functions
 '''
 if mode.__eq__("M"):
     print("Loading functions to load and play with a pre-trained AI model")
-    def playSnake(player):
+    def playSnake(player, env):
         savingBoardHistory = False
         print("Save board history? (y/n)")
         usrIn = input()
@@ -425,7 +425,7 @@ if mode.__eq__("M"):
         
         print("How many games should be played?")
         numGames = int(input())
-        env = Snake(boardSize=20, startingSize=4)
+        
         for game in range(1, numGames+1):
             state = env.reset() # get initial state
             tick, score = env.getGameInfo()
@@ -465,12 +465,13 @@ if mode.__eq__("M"):
     print("Type full path to model save that you wish to load: ")
     path = input()
     print("Loading from: {}".format(path))
+    env = Snake(boardSize=20, startingSize=4)
     numStateInputs = env.numStateInputs
     numActions = env.numActions
     player = AIPlayer(numStateInputs, numActions)
     player.load(path)
     print("Playing Snake with loaded model...")
-    playSnake(player)
+    playSnake(player, env)
     
 #%%
 '''
