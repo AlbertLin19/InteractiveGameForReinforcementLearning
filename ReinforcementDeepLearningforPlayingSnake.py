@@ -518,7 +518,7 @@ if mode.__eq__("T"):
     for game in range(1, NumTrainGames+1):
         state = env.reset() # get initial state
         print("Current High Score: {}".format(highestScore))
-        print("Current Game: {}/{}".format(game, NumTrainGames))
+        #print("Current Game: {}/{}".format(game, NumTrainGames))
         tick, score = env.getGameInfo()
         #print("Current Tick: {}".format(tick))
         #print("Current Score: {}".format(score))
