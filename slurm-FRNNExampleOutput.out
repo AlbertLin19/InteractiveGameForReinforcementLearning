@@ -1,0 +1,992 @@
+rm: cannot remove ‘/scratch/gpfs/aklin/model_checkpoints/*’: No such file or directory
+rm: cannot remove ‘/scratch/gpfs/aklin/results/*’: No such file or directory
+rm: cannot remove ‘/scratch/gpfs/aklin/csv_logs/*’: No such file or directory
+rm: cannot remove ‘/scratch/gpfs/aklin/Graph/*’: No such file or directory
+rm: cannot remove ‘/scratch/gpfs/aklin/normalization/*’: No such file or directory
+2018-07-30 10:11:00.744116: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744169: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744175: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744180: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744186: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744214: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744236: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744241: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744184: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744250: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744277: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744300: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744305: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744192: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744210: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744216: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744220: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744224: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744309: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744327: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744311: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744329: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744336: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744341: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744327: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744334: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744340: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744346: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744334: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744340: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744345: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744345: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744320: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744344: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744351: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744357: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744361: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744320: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744344: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744351: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744356: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744361: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744246: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744186: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744213: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744236: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744241: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744245: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744247: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744265: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744271: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744277: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744282: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744241: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744265: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744271: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744276: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:00.744281: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-07-30 10:11:01.310666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:82:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.310714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.310722: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.310733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0)
+2018-07-30 10:11:01.311269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:83:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.311305: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.311312: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.311338: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:83:00.0)
+2018-07-30 10:11:01.313683: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:03:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.313731: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.313739: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.313752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:03:00.0)
+2018-07-30 10:11:01.313728: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:04:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.313747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.313754: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.313763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:04:00.0)
+2018-07-30 10:11:01.319938: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:83:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.319986: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.319994: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.320006: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:83:00.0)
+2018-07-30 10:11:01.322511: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:83:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.322559: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.322568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.322596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:83:00.0)
+2018-07-30 10:11:01.323325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:82:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.323349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.323374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.323384: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0)
+2018-07-30 10:11:01.325548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:04:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.325613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.325622: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.325593: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:03:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.325636: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.325660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.325670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:03:00.0)
+2018-07-30 10:11:01.325633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:04:00.0)
+2018-07-30 10:11:01.324248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:82:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.324272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.324280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.324290: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0)
+2018-07-30 10:11:01.326055: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:04:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.326109: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.326118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.326130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:04:00.0)
+2018-07-30 10:11:01.326875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:03:00.0
+Total memory: 15.90GiB
+Free memory: 15.61GiB
+2018-07-30 10:11:01.326898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2018-07-30 10:11:01.326907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2018-07-30 10:11:01.326931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:03:00.0)
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[0] importing Keras
+{'callbacks': {'list': ['earlystop'],
+               'metrics': ['val_loss', 'val_roc', 'train_loss'],
+               'mode': 'max',
+               'monitor': 'val_roc',
+               'patience': 5,
+               'write_grads': False},
+ 'data': {'T_max': 1000.0,
+          'T_min_warn': 30,
+          'T_warning': 1.024,
+          'augment_during_training': False,
+          'augmentation_mode': 'none',
+          'bleed_in': 0,
+          'bleed_in_equalize_sets': False,
+          'bleed_in_remove_from_test': True,
+          'bleed_in_repeat_fac': 1,
+          'current_end_thresh': 10000,
+          'current_index': 0,
+          'current_thresh': 750000,
+          'cut_shot_ends': True,
+          'dt': 0.001,
+          'equalize_classes': False,
+          'floatx': 'float32',
+          'norm_stat_range': 100.0,
+          'normalizer': 'var',
+          'plotting': False,
+          'positive_example_penalty': 1.0,
+          'recompute': False,
+          'recompute_normalization': False,
+          'signal_to_augment': 'None',
+          'target': <class 'plasma.models.targets.HingeTarget'>,
+          'use_shots': 200000,
+          'window_decay': 2,
+          'window_size': 10},
+ 'env': {'name': 'frnn', 'type': 'anaconda'},
+ 'fs_path': '/tigress',
+ 'model': {'backend': 'tensorflow',
+           'clipnorm': 10.0,
+           'dense_regularization': 0.001,
+           'dense_size': 128,
+           'dropout_prob': 0.1,
+           'extra_dense_input': False,
+           'ignore_timesteps': 100,
+           'length': 128,
+           'loss_scale_factor': 1.0,
+           'lr': 2e-05,
+           'lr_decay': 0.97,
+           'num_conv_filters': 128,
+           'num_conv_layers': 3,
+           'optimizer': 'adam',
+           'pool_size': 2,
+           'pred_batch_size': 128,
+           'pred_length': 200,
+           'regularization': 0.001,
+           'return_sequences': True,
+           'rnn_layers': 2,
+           'rnn_size': 200,
+           'rnn_type': 'LSTM',
+           'shallow': False,
+           'shallow_model': {'C': 1.0,
+                             'final_hidden_layer_size': 10,
+                             'kernel': 'rbf',
+                             'learning_rate': 0.1,
+                             'learning_rate_mlp': 0.0001,
+                             'max_depth': 3,
+                             'mlp_regularization': 0.0001,
+                             'n_estimators': 100,
+                             'num_hidden_layers': 3,
+                             'num_samples': 1000000,
+                             'scale_pos_weight': 10.0,
+                             'skip_train': False,
+                             'type': 'xgboost'},
+           'size_conv_filters': 3,
+           'skip': 1,
+           'stateful': True,
+           'use_batch_norm': False,
+           'use_bidirectional': False,
+           'warmup_steps': 0},
+ 'num_gpus': 4,
+ 'paths': {'all_machines': [jet],
+           'all_signals': [q95 safety factor,
+                           internal inductance,
+                           plasma current,
+                           Normalized Beta,
+                           stored energy,
+                           Locked mode amplitude,
+                           Plasma density,
+                           Radiated Power Core,
+                           Radiated Power Edge,
+                           Radiated Power,
+                           Input Power (beam for d3d),
+                           Input Beam Torque,
+                           stored energy time derivative,
+                           plasma current direction,
+                           plasma current target,
+                           plasma current error,
+                           Electron temperature profile,
+                           Electron density profile],
+           'all_signals_dict': {'betan': Normalized Beta,
+                                'dens': Plasma density,
+                                'edens_profile': Electron density profile,
+                                'energy': stored energy,
+                                'energydt': stored energy time derivative,
+                                'etemp_profile': Electron temperature profile,
+                                'ip': plasma current,
+                                'ipdirect': plasma current direction,
+                                'iperr': plasma current error,
+                                'iptarget': plasma current target,
+                                'li': internal inductance,
+                                'lm': Locked mode amplitude,
+                                'pin': Input Power (beam for d3d),
+                                'pradcore': Radiated Power Core,
+                                'pradedge': Radiated Power Edge,
+                                'pradtot': Radiated Power,
+                                'q95': q95 safety factor,
+                                'torquein': Input Beam Torque},
+           'base_path': '/tigress/aklin',
+           'csvlog_save_path': '/tigress/aklin/csv_logs/',
+           'data': 'jet_data',
+           'executable': 'mpi_learn.py',
+           'global_normalizer_path': '/tigress/aklin/normalization/normalization_signal_group_3236450206765786377241194018831785328.npz',
+           'model_save_path': '/tigress/aklin/model_checkpoints/',
+           'normalizer_path': '/tigress/aklin/normalization/normalization_signal_group_3236450206765786377241194018831785328.npz',
+           'output_path': '/tigress/aklin',
+           'processed_prepath': '/tigress/aklin/processed_shots/signal_group_3236450206765786377241194018831785328/',
+           'results_prepath': '/tigress/aklin/results/',
+           'saved_shotlist_path': '/tigress/aklin/processed_shotlists/jet_data/shot_lists_signal_group_3236450206765786377241194018831785328.npz',
+           'shallow_executable': 'learn.py',
+           'shot_files': [machine: jet
+jet carbon wall data],
+           'shot_files_all': [machine: jet
+jet carbon wall data,
+                              machine: jet
+jet iter like wall data],
+           'shot_files_test': [machine: jet
+jet iter like wall data],
+           'shot_list_dir': '/tigress/aklin/shot_lists/',
+           'signal_prepath': '/tigress/aklin/signal_data/',
+           'specific_signals': [],
+           'tensorboard_save_path': '/tigress/aklin/Graph/',
+           'use_signals': [q95 safety factor,
+                           internal inductance,
+                           plasma current,
+                           stored energy,
+                           Locked mode amplitude,
+                           Plasma density,
+                           Radiated Power Core,
+                           Radiated Power Edge,
+                           Radiated Power,
+                           Input Power (beam for d3d),
+                           stored energy time derivative],
+           'use_signals_dict': {'dens': Plasma density,
+                                'energy': stored energy,
+                                'energydt': stored energy time derivative,
+                                'ip': plasma current,
+                                'li': internal inductance,
+                                'lm': Locked mode amplitude,
+                                'pin': Input Power (beam for d3d),
+                                'pradcore': Radiated Power Core,
+                                'pradedge': Radiated Power Edge,
+                                'pradtot': Radiated Power,
+                                'q95': q95 safety factor}},
+ 'target': 'hinge',
+ 'training': {'as_array_of_shots': True,
+              'batch_generator_warmup_steps': 0,
+              'batch_size': 128,
+              'data_parallel': False,
+              'hyperparam_tuning': False,
+              'max_patch_length': 100000,
+              'num_batches_minimum': 200,
+              'num_epochs': 1000,
+              'num_shots_at_once': 200,
+              'ranking_difficulty_fac': 1.0,
+              'shuffle_training': True,
+              'train_frac': 0.75,
+              'use_mock_data': False,
+              'validation_frac': 0.33},
+ 'user_name': 'aklin'}
+{'callbacks': {'list': ['earlystop'],
+               'metrics': ['val_loss', 'val_roc', 'train_loss'],
+               'mode': 'max',
+               'monitor': 'val_roc',
+               'patience': 5,
+               'write_grads': False},
+ 'data': {'T_max': 1000.0,
+          'T_min_warn': 30,
+          'T_warning': 1.024,
+          'augment_during_training': False,
+          'augmentation_mode': 'none',
+          'bleed_in': 0,
+          'bleed_in_equalize_sets': False,
+          'bleed_in_remove_from_test': True,
+          'bleed_in_repeat_fac': 1,
+          'current_end_thresh': 10000,
+          'current_index': 0,
+          'current_thresh': 750000,
+          'cut_shot_ends': True,
+          'dt': 0.001,
+          'equalize_classes': False,
+          'floatx': 'float32',
+          'norm_stat_range': 100.0,
+          'normalizer': 'var',
+          'plotting': False,
+          'positive_example_penalty': 1.0,
+          'recompute': False,
+          'recompute_normalization': False,
+          'signal_to_augment': 'None',
+          'target': <class 'plasma.models.targets.HingeTarget'>,
+          'use_shots': 200000,
+          'window_decay': 2,
+          'window_size': 10},
+ 'env': {'name': 'frnn', 'type': 'anaconda'},
+ 'fs_path': '/tigress',
+ 'model': {'backend': 'tensorflow',
+           'clipnorm': 10.0,
+           'dense_regularization': 0.001,
+           'dense_size': 128,
+           'dropout_prob': 0.1,
+           'extra_dense_input': False,
+           'ignore_timesteps': 100,
+           'length': 128,
+           'loss_scale_factor': 1.0,
+           'lr': 2e-05,
+           'lr_decay': 0.97,
+           'num_conv_filters': 128,
+           'num_conv_layers': 3,
+           'optimizer': 'adam',
+           'pool_size': 2,
+           'pred_batch_size': 128,
+           'pred_length': 200,
+           'regularization': 0.001,
+           'return_sequences': True,
+           'rnn_layers': 2,
+           'rnn_size': 200,
+           'rnn_type': 'LSTM',
+           'shallow': False,
+           'shallow_model': {'C': 1.0,
+                             'final_hidden_layer_size': 10,
+                             'kernel': 'rbf',
+                             'learning_rate': 0.1,
+                             'learning_rate_mlp': 0.0001,
+                             'max_depth': 3,
+                             'mlp_regularization': 0.0001,
+                             'n_estimators': 100,
+                             'num_hidden_layers': 3,
+                             'num_samples': 1000000,
+                             'scale_pos_weight': 10.0,
+                             'skip_train': False,
+                             'type': 'xgboost'},
+           'size_conv_filters': 3,
+           'skip': 1,
+           'stateful': True,
+           'use_batch_norm': False,
+           'use_bidirectional': False,
+           'warmup_steps': 0},
+ 'num_gpus': 4,
+ 'paths': {'all_machines': [jet],
+           'all_signals': [q95 safety factor,
+                           internal inductance,
+                           plasma current,
+                           Normalized Beta,
+                           stored energy,
+                           Locked mode amplitude,
+                           Plasma density,
+                           Radiated Power Core,
+                           Radiated Power Edge,
+                           Radiated Power,
+                           Input Power (beam for d3d),
+                           Input Beam Torque,
+                           stored energy time derivative,
+                           plasma current direction,
+                           plasma current target,
+                           plasma current error,
+                           Electron temperature profile,
+                           Electron density profile],
+           'all_signals_dict': {'betan': Normalized Beta,
+                                'dens': Plasma density,
+                                'edens_profile': Electron density profile,
+                                'energy': stored energy,
+                                'energydt': stored energy time derivative,
+                                'etemp_profile': Electron temperature profile,
+                                'ip': plasma current,
+                                'ipdirect': plasma current direction,
+                                'iperr': plasma current error,
+                                'iptarget': plasma current target,
+                                'li': internal inductance,
+                                'lm': Locked mode amplitude,
+                                'pin': Input Power (beam for d3d),
+                                'pradcore': Radiated Power Core,
+                                'pradedge': Radiated Power Edge,
+                                'pradtot': Radiated Power,
+                                'q95': q95 safety factor,
+                                'torquein': Input Beam Torque},
+           'base_path': '/tigress/aklin',
+           'csvlog_save_path': '/tigress/aklin/csv_logs/',
+           'data': 'jet_data',
+           'executable': 'mpi_learn.py',
+           'global_normalizer_path': '/tigress/aklin/normalization/normalization_signal_group_3236450206765786377241194018831785328.npz',
+           'model_save_path': '/tigress/aklin/model_checkpoints/',
+           'normalizer_path': '/tigress/aklin/normalization/normalization_signal_group_3236450206765786377241194018831785328.npz',
+           'output_path': '/tigress/aklin',
+           'processed_prepath': '/tigress/aklin/processed_shots/signal_group_3236450206765786377241194018831785328/',
+           'results_prepath': '/tigress/aklin/results/',
+           'saved_shotlist_path': '/tigress/aklin/processed_shotlists/jet_data/shot_lists_signal_group_3236450206765786377241194018831785328.npz',
+           'shallow_executable': 'learn.py',
+           'shot_files': [machine: jet
+jet carbon wall data],
+           'shot_files_all': [machine: jet
+jet carbon wall data,
+                              machine: jet
+jet iter like wall data],
+           'shot_files_test': [machine: jet
+jet iter like wall data],
+           'shot_list_dir': '/tigress/aklin/shot_lists/',
+           'signal_prepath': '/tigress/aklin/signal_data/',
+           'specific_signals': [],
+           'tensorboard_save_path': '/tigress/aklin/Graph/',
+           'use_signals': [q95 safety factor,
+                           internal inductance,
+                           plasma current,
+                           stored energy,
+                           Locked mode amplitude,
+                           Plasma density,
+                           Radiated Power Core,
+                           Radiated Power Edge,
+                           Radiated Power,
+                           Input Power (beam for d3d),
+                           stored energy time derivative],
+           'use_signals_dict': {'dens': Plasma density,
+                                'energy': stored energy,
+                                'energydt': stored energy time derivative,
+                                'ip': plasma current,
+                                'li': internal inductance,
+                                'lm': Locked mode amplitude,
+                                'pin': Input Power (beam for d3d),
+                                'pradcore': Radiated Power Core,
+                                'pradedge': Radiated Power Edge,
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[9] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[7] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b4f16dfcd30>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b2d7127cc18>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[1] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b1ecbf28240>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[3] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Using TensorFlow backend.
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[2] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+Using TensorFlow backend.
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[11] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[6] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b4af7dceda0>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstloaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+ack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b9007042c18>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+Using TensorFlow backend.
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b60cf5ead30>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unst['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+ack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b20e8953da0>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[8] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b93bf2ba198>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[4] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b56366bdc18>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[10] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Using TensorFlow backend.
+all signals (determines which signals are downloaded and preprocessed):
+dict_values([q95 safety factor, internal inductance, plasma current, Normalized Beta, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), Input Beam Torque, stored energy time derivative, plasma current direction, plasma current target, plasma current error, Electron temperature profile, Electron density profile])
+Selected signals (determines which signals training is run on):
+[q95 safety factor, internal inductance, plasma current, stored energy, Locked mode amplitude, Plasma density, Radiated Power Core, Radiated Power Edge, Radiated Power, Input Power (beam for d3d), stored energy time derivative]
+[5] importing Keras
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b76be88cda0>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2b63ffda6da0>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+Using TensorFlow backend.
+                                'pradtot': Radiated Power,
+                                'q95': q95 safety factor}},
+ 'target': 'hinge',
+ 'training': {'as_array_of_shots': True,
+              'batch_generator_warmup_steps': 0,
+              'batch_size': 128,
+              'data_parallel': False,
+              'hyperparam_tuning': False,
+              'max_patch_length': 100000,
+              'num_batches_minimum': 200,
+              'num_epochs': 1000,
+              'num_shots_at_once': 200,
+              'ranking_difficulty_fac': 1.0,
+              'shuffle_training': True,
+              'train_frac': 0.75,
+              'use_mock_data': False,
+              'validation_frac': 0.33},
+ 'user_name': 'aklin'}
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+shots already processed.
+validate: 1424 shots, 90 disruptive
+training: 2893 shots, 215 disruptive
+testing: 1184 shots, 174 disruptive
+...done
+normalizationMachine jet:
+loaded normalization data from {jet: 4317} shots ( {jet: 305} disruptive )
+Machine: jet:
+Var Normalizer.
+stds: [  2.02412859e+00   3.55355672e-01   5.14556531e+05   9.01115012e+05
+   5.42612620e-05   2.52248064e+19   1.12923298e+04   1.34795222e+04
+   1.39518661e+06   3.23216481e+06   7.03917011e+05]
+
+...done
+Traceback (most recent call last):
+  File "mpi_learn.py", line 93, in <module>
+    mpi_train(conf,shot_list_train,shot_list_validate,loader)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train
+    train_model = specific_builder.build_model(False)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model
+    x_in = TimeDistributed(pre_rnn_model) (x_input)
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call
+  File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2957, in rnn
+TypeError: while_loop() got an unexpected keyword argument 'maximum_iterations'
+ERROR:tensorflow:==================================
+Object was never used (type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>):
+<tensorflow.python.ops.tensor_array_ops.TensorArray object at 0x2afb54d96eb8>
+If you want to mark it as used call its "mark_used()" method.
+It was originally created here:
+['File "mpi_learn.py", line 93, in <module>\n    mpi_train(conf,shot_list_train,shot_list_validate,loader)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/mpi_runner.py", line 653, in mpi_train\n    train_model = specific_builder.build_model(False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/plasma-1.0.0-py3.6.egg/plasma/models/builder.py", line 188, in build_model\n    x_in = TimeDistributed(pre_rnn_model) (x_input)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/engine/base_layer.py", line 460, in __call__\n    output = self.call(inputs, **kwargs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/layers/wrappers.py", line 229, in call\n    unroll=False)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/Keras-2.2.0-py3.6.egg/keras/backend/tensorflow_backend.py", line 2877, in rnn\n    input_ta = input_ta.unstack(inputs)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 413, in unstack\n    indices=math_ops.range(0, num_elements), value=value, name=name)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 175, in wrapped\n    return _add_should_use_warning(fn(*args, **kwargs))', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 144, in _add_should_use_warning\n    wrapped = TFShouldUseWarningWrapper(x)', 'File "/home/aklin/.conda/envs/FRNN_env/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 101, in __init__\n    stack = [s.strip() for s in traceback.format_stack()]']
+==================================
+srun: error: tiger-i20g9: tasks 0-3: Exited with exit code 1
+srun: Terminating job step 1082438.0
+srun: error: tiger-i20g16: tasks 8-11: Exited with exit code 1
+srun: error: tiger-i20g12: tasks 4-7: Exited with exit code 1
